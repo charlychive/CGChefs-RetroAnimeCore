@@ -104,7 +104,9 @@
     overflow-y:auto;
     z-index:40;
     transition:transform .25s ease;
+    scrollbar-width:none; /* Firefox: hide scrollbar entirely */
   }
+  .sidebar::-webkit-scrollbar{ display:none; } /* Chrome/Safari/Edge: hide scrollbar entirely */
   .sidebar-head{
     padding:26px 22px 20px 22px;
     border-bottom:1px solid var(--border);
