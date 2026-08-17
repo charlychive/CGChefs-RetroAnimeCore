@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CGCHEFS — Retro Anime Core</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      DESIGN TOKENS
@@ -31,6 +31,14 @@
     --cat-shader:    #6bc46d;
     --cat-compositor:#9d6dd6;
     --accent-pink:   #ff4fa3;
+    --cat-install:   #dba8ec;
+    --cat-modifiers: #5b8fe0;
+    --cat-materials: #c2645f;
+    --cat-assets:    #2fae8c;
+    --cat-roadmap:   #d4af37;
+    --cat-tutorials: #a6a6f2;
+    --cat-faq:       #a13a3a;
+    --cat-contact:   #e0559a;
 
     --radius: 5px;
     --sidebar-w: 272px;
@@ -101,17 +109,18 @@
 
   .nav-group{ padding:18px 12px 6px 12px; }
   .nav-group-label{
-    font-family:'JetBrains Mono',monospace;
-    font-size:10.5px; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--text-faint);
-    padding:4px 10px 8px 10px;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:14.5px; letter-spacing:0; text-transform:uppercase;
+    color:var(--text-dim);
+    padding:6px 10px 10px 10px;
     display:flex; align-items:center; gap:7px;
     width:100%;
     background:none; border:none;
     cursor:pointer;
     text-align:left;
   }
-  .nav-group-label:hover{ color:var(--text-dim); }
+  .nav-group-label:hover{ color:var(--text); }
   .nav-group-label .dot{ width:7px; height:7px; border-radius:50%; flex:none; }
   .nav-group-label .chevron{
     flex:none; transition:transform .15s ease; opacity:.7;
@@ -161,6 +170,13 @@
   }
   .nav-link.active .stub{ opacity:1; }
 
+  .nav-empty{
+    padding:7px 10px 10px 10px;
+    font-size:12px;
+    font-style:italic;
+    color:var(--text-faint);
+  }
+
   .sidebar-foot{
     padding:16px 22px 26px 22px;
     font-size:11.5px; color:var(--text-faint);
@@ -192,12 +208,17 @@
     border-bottom:1px solid var(--border);
     position:relative;
     overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 100% at 88% -10%, rgba(255,79,163,.16), transparent 55%),
+      radial-gradient(ellipse 60% 90% at 8% 110%, rgba(157,109,214,.12), transparent 60%),
+      linear-gradient(155deg, var(--bg-raised) 0%, var(--bg) 55%, #1a1520 100%);
   }
   .hero::after{
     content:"";
     position:absolute; inset:0;
-    background:radial-gradient(ellipse 60% 90% at 85% 0%, rgba(107,196,109,.10), transparent 60%),
-               radial-gradient(ellipse 50% 80% at 15% 100%, rgba(79,143,214,.08), transparent 60%);
+    background:
+      radial-gradient(ellipse 40% 60% at 95% 5%, rgba(255,79,163,.10), transparent 65%),
+      linear-gradient(90deg, transparent 0%, rgba(255,79,163,.03) 100%);
     pointer-events:none;
   }
   .hero-inner{ max-width:760px; position:relative; }
@@ -223,7 +244,8 @@
   }
   .legend-item{
     display:flex; align-items:center; gap:7px;
-    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-faint);
+    font-family:'Fredoka',sans-serif; font-weight:600;
+    font-size:13px; letter-spacing:0; color:var(--text-dim);
   }
   .legend-item .dot{ width:8px; height:8px; border-radius:50%; }
 
@@ -246,15 +268,17 @@
   }
   .cat-badge{
     display:inline-flex; align-items:center; gap:6px;
-    font-family:'JetBrains Mono',monospace;
-    font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
-    padding:3px 8px; border-radius:3px;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:11.5px; letter-spacing:0; text-transform:uppercase;
+    padding:4px 9px; border-radius:3px;
     border:1px solid var(--border);
     color:var(--text-dim);
   }
   .cat-badge .dot{ width:6px; height:6px; border-radius:50%; }
   .node-path{
-    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-faint);
+    font-family:'Fredoka',sans-serif; font-weight:500;
+    font-size:12.5px; letter-spacing:0; color:var(--text-faint);
   }
 
   .node-main h2{
@@ -392,7 +416,7 @@
     <!-- ============================================================
          HERO
          ============================================================ -->
-    <header class="hero dotgrid">
+    <header class="hero">
       <div class="hero-inner">
         <div class="hero-eyebrow">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#6bc46d" stroke-width="2.5"><circle cx="12" cy="12" r="9"/></svg>
@@ -644,8 +668,16 @@ const NODEGROUPS = [
    RENDERING
    ================================================================ */
 const CAT_META = {
-  shader:      { label:"Shader",      color:"var(--cat-shader)" },
-  compositor:  { label:"Compositor",  color:"var(--cat-compositor)"  }
+  install:     { label:"Installation Guide",  color:"var(--cat-install)" },
+  shader:      { label:"Shader Nodes",        color:"var(--cat-shader)" },
+  compositor:  { label:"Compositing Nodes",   color:"var(--cat-compositor)" },
+  modifiers:   { label:"Modifiers",           color:"var(--cat-modifiers)" },
+  materials:   { label:"Materials",           color:"var(--cat-materials)" },
+  assets:      { label:"Assets",              color:"var(--cat-assets)" },
+  roadmap:     { label:"Roadmap",             color:"var(--cat-roadmap)" },
+  tutorials:   { label:"Tutorials",           color:"var(--cat-tutorials)" },
+  faq:         { label:"FAQ",                 color:"var(--cat-faq)" },
+  contact:     { label:"Contact",             color:"var(--cat-contact)" }
 };
 const TYPE_COLOR = {
   shader:"var(--sock-shader)", value:"var(--sock-value)",
@@ -672,20 +704,24 @@ function buildNav(){
   NODEGROUPS.forEach(n => (groups[n.category] ||= []).push(n));
   let html = "";
   Object.keys(CAT_META).forEach(cat => {
-    if(!groups[cat]) return;
     const meta = CAT_META[cat];
+    const items = groups[cat] || [];
     html += `<div class="nav-group">
-      <button type="button" class="nav-group-label" data-group="${cat}" aria-expanded="true">
+      <button type="button" class="nav-group-label collapsed" data-group="${cat}" aria-expanded="false">
         <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
         <span class="dot" style="background:${meta.color}"></span>${meta.label}
-        <span class="group-count">${groups[cat].length}</span>
+        <span class="group-count">${items.length}</span>
       </button>
-      <div class="nav-group-links" data-group-links="${cat}"><div class="links-inner">`;
-    groups[cat].forEach(n => {
-      html += `<a class="nav-link" data-target="${n.id}" href="#${n.id}" style="--accent-active:${meta.color}">
-        <span class="stub" style="background:${meta.color}"></span>${n.name}
-      </a>`;
-    });
+      <div class="nav-group-links collapsed" data-group-links="${cat}"><div class="links-inner">`;
+    if(items.length){
+      items.forEach(n => {
+        html += `<a class="nav-link" data-target="${n.id}" href="#${n.id}" style="--accent-active:${meta.color}">
+          <span class="stub" style="background:${meta.color}"></span>${n.name}
+        </a>`;
+      });
+    } else {
+      html += `<div class="nav-empty">Coming soon</div>`;
+    }
     html += `</div></div></div>`;
   });
   document.getElementById("navContent").innerHTML = html;
