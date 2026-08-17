@@ -745,9 +745,21 @@ function buildNav(){
     btn.addEventListener("click", () => {
       const cat = btn.dataset.group;
       const links = document.querySelector(`[data-group-links="${cat}"]`);
-      const collapsed = links.classList.toggle("collapsed");
-      btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
-      btn.classList.toggle("collapsed", collapsed);
+      const wasCollapsed = links.classList.contains("collapsed");
+
+      // close every group first
+      document.querySelectorAll(".nav-group-links").forEach(el => el.classList.add("collapsed"));
+      document.querySelectorAll(".nav-group-label").forEach(b => {
+        b.classList.add("collapsed");
+        b.setAttribute("aria-expanded", "false");
+      });
+
+      // then reopen only the one that was clicked, if it had been closed
+      if(wasCollapsed){
+        links.classList.remove("collapsed");
+        btn.classList.remove("collapsed");
+        btn.setAttribute("aria-expanded", "true");
+      }
     });
   });
 }
