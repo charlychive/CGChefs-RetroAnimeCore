@@ -40,6 +40,16 @@
     --cat-faq:       #a13a3a;
     --cat-contact:   #e0559a;
 
+    /* shader nodegroup subcategories (outliner sub-tree) */
+    --sub-color:      #d9c14a;
+    --sub-core:       #6bc46d;
+    --sub-dynamic:    #e8794a;
+    --sub-mapping:    #5b8fe0;
+    --sub-normals:    #6d6dc9;
+    --sub-shaders:    #9d6dd6;
+    --sub-texturing:  #c2645f;
+    --sub-utilities:  #2fae8c;
+
     --radius: 5px;
     --sidebar-w: 272px;
     --imgpanel-w: 300px;
@@ -194,6 +204,49 @@
     font-style:italic;
     color:var(--text-faint);
   }
+
+  /* ---------------- NESTED SUBGROUPS (outliner sub-tree, e.g. Shader Nodes > Color) ---------------- */
+  .nav-subgroup{ padding-left:8px; }
+  .nav-subgroup-label{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:12.5px; letter-spacing:0; text-transform:uppercase;
+    color:var(--text-dim);
+    padding:9px 10px 9px 22px;
+    display:flex; align-items:center; gap:7px;
+    width:100%;
+    background:none; border:none;
+    cursor:pointer;
+    text-align:left;
+    border-radius:var(--radius);
+  }
+  .nav-subgroup-label:hover{ color:var(--text); background:var(--panel-2); }
+  .nav-subgroup-label .dot{ width:6px; height:6px; border-radius:50%; flex:none; }
+  .nav-subgroup-label .chevron{
+    width:8px; height:8px; flex:none; transition:transform .15s ease; opacity:.6;
+  }
+  .nav-subgroup-label.collapsed .chevron{ transform:rotate(-90deg); }
+  .nav-subgroup-label .group-count{
+    margin-left:auto;
+    color:var(--text-faint);
+    font-size:9.5px;
+    opacity:.7;
+  }
+  .nav-subgroup-links{
+    display:grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows .22s ease;
+  }
+  .nav-subgroup-links .links-inner{
+    overflow:hidden;
+    min-height:0;
+    display:flex; flex-direction:column;
+  }
+  .nav-subgroup-links.collapsed{
+    grid-template-rows: 0fr;
+  }
+  .nav-link.sub-link{ padding-left:32px; font-size:13px; }
+  .nav-subgroup .nav-empty{ padding-left:22px; }
 
   .sidebar-foot{
     padding:16px 22px 26px 22px;
@@ -476,6 +529,7 @@ const NODEGROUPS = [
   {
     id: "gradient-core",
     category: "shader",
+    sub: "core",
     name: "Gradient Core",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Gradient Core does and how it fits into the shading workflow.",
@@ -492,6 +546,7 @@ const NODEGROUPS = [
   {
     id: "custom-cel-shade",
     category: "shader",
+    sub: "shaders",
     name: "Custom Cel Shade",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Custom Cel Shade does and how it fits into the shading workflow.",
@@ -505,6 +560,452 @@ const NODEGROUPS = [
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
+
+  /* ---- Color ---- */
+  {
+    id: "gouache-color",
+    category: "shader",
+    sub: "color",
+    name: "Gouache Color",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Gouache Color does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "lut",
+    category: "shader",
+    sub: "color",
+    name: "LUT",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what LUT does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "mix-hsl",
+    category: "shader",
+    sub: "color",
+    name: "Mix HSL",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Mix HSL does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "mix-ryb",
+    category: "shader",
+    sub: "color",
+    name: "Mix RYB",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Mix RYB does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "color-blend-mix",
+    category: "shader",
+    sub: "color",
+    name: "Color Blend Mix",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Color Blend Mix does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "tricolor-blend-mix",
+    category: "shader",
+    sub: "color",
+    name: "Tricolor Blend Mix",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Tricolor Blend Mix does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color C", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Core ---- */
+  {
+    id: "smart-bevel",
+    category: "shader",
+    sub: "core",
+    name: "Smart Bevel",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Smart Bevel does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Radius", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Dynamic ---- */
+  {
+    id: "anisotropic-specular",
+    category: "shader",
+    sub: "dynamic",
+    name: "Anisotropic Specular",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Anisotropic Specular does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Roughness", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "highlights",
+    category: "shader",
+    sub: "dynamic",
+    name: "Highlights",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Highlights does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "straight-fresnel",
+    category: "shader",
+    sub: "dynamic",
+    name: "Straight Fresnel",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Straight Fresnel does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"IOR", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "streaks",
+    category: "shader",
+    sub: "dynamic",
+    name: "Streaks",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Streaks does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Amount", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Mapping ---- */
+  {
+    id: "camdata-plus",
+    category: "shader",
+    sub: "mapping",
+    name: "CamData+",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what CamData+ does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Camera Data", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "spatial-uvs",
+    category: "shader",
+    sub: "mapping",
+    name: "Spatial UVs",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Spatial UVs does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"UV", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "spatial-uvs-stable",
+    category: "shader",
+    sub: "mapping",
+    name: "Spatial UVs Stable",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Spatial UVs Stable does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"UV", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "triplanar",
+    category: "shader",
+    sub: "mapping",
+    name: "Triplanar",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Triplanar does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Blend", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Normals ---- */
+  {
+    id: "image-normal-offset",
+    category: "shader",
+    sub: "normals",
+    name: "Image Normal Offset",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Image Normal Offset does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "normal-map-extra",
+    category: "shader",
+    sub: "normals",
+    name: "Normal Map Extra",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Normal Map Extra does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "normal-reflection-voronoi",
+    category: "shader",
+    sub: "normals",
+    name: "Normal Reflection Voronoi",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Normal Reflection Voronoi does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Shaders ---- */
+  {
+    id: "lorem-ipsum-1",
+    category: "shader",
+    sub: "shaders",
+    name: "Lorem Ipsum 1",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Lorem Ipsum 1 does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Input", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "lorem-ipsum-2",
+    category: "shader",
+    sub: "shaders",
+    name: "Lorem Ipsum 2",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Lorem Ipsum 2 does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Input", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Texturing ---- */
+  {
+    id: "add-whitenoise",
+    category: "shader",
+    sub: "texturing",
+    name: "Add WhiteNoise",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Add WhiteNoise does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "gobo-noise-a",
+    category: "shader",
+    sub: "texturing",
+    name: "Gobo Noise A",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Gobo Noise A does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "granular-overlay",
+    category: "shader",
+    sub: "texturing",
+    name: "Granular Overlay",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Granular Overlay does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "screennoise",
+    category: "shader",
+    sub: "texturing",
+    name: "ScreenNoise",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what ScreenNoise does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "soft-ao",
+    category: "shader",
+    sub: "texturing",
+    name: "Soft AO",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Soft AO does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Distance", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"AO", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
+  /* ---- Utilities ---- */
+  {
+    id: "image-select-closure",
+    category: "shader",
+    sub: "utilities",
+    name: "Image Select Closure",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Image Select Closure does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "project-onto-normal",
+    category: "shader",
+    sub: "utilities",
+    name: "Project Onto Normal",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Project Onto Normal does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "smooth-threshold",
+    category: "shader",
+    sub: "utilities",
+    name: "Smooth Threshold",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Smooth Threshold does and how it fits into the shading workflow.",
+    inputs: [
+      { name:"Value", type:"value", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Threshold", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+
   {
     id: "retro-bloom",
     category: "compositor",
@@ -685,9 +1186,22 @@ const NODEGROUPS = [
 /* ================================================================
    RENDERING
    ================================================================ */
+/* Subcategories nested inside the "Shader Nodes" outliner group.
+   Every shader nodegroup should set a `sub` field matching one of these keys. */
+const SHADER_SUBCATS = {
+  color:      { label:"Color",      color:"var(--sub-color)" },
+  core:       { label:"Core",       color:"var(--sub-core)" },
+  dynamic:    { label:"Dynamic",    color:"var(--sub-dynamic)" },
+  mapping:    { label:"Mapping",    color:"var(--sub-mapping)" },
+  normals:    { label:"Normals",    color:"var(--sub-normals)" },
+  shaders:    { label:"Shaders",    color:"var(--sub-shaders)" },
+  texturing:  { label:"Texturing",  color:"var(--sub-texturing)" },
+  utilities:  { label:"Utilities",  color:"var(--sub-utilities)" }
+};
+
 const CAT_META = {
   install:     { label:"Installation Guide",  color:"var(--cat-install)" },
-  shader:      { label:"Shader Nodes",        color:"var(--cat-shader)" },
+  shader:      { label:"Shader Nodes",        color:"var(--cat-shader)", subcats: SHADER_SUBCATS },
   compositor:  { label:"Compositing Nodes",   color:"var(--cat-compositor)" },
   modifiers:   { label:"Modifiers",           color:"var(--cat-modifiers)" },
   materials:   { label:"Materials",           color:"var(--cat-materials)" },
@@ -731,7 +1245,33 @@ function buildNav(){
         <span class="group-count">${items.length}</span>
       </button>
       <div class="nav-group-links collapsed" data-group-links="${cat}"><div class="links-inner">`;
-    if(items.length){
+
+    if(meta.subcats){
+      // nested outliner tree: group this category's items by their `sub` key
+      const subGroups = {};
+      items.forEach(n => (subGroups[n.sub] ||= []).push(n));
+      Object.keys(meta.subcats).forEach(subKey => {
+        const subMeta = meta.subcats[subKey];
+        const subItems = subGroups[subKey] || [];
+        html += `<div class="nav-subgroup">
+          <button type="button" class="nav-subgroup-label collapsed" data-subgroup="${cat}-${subKey}" aria-expanded="false">
+            <svg class="chevron" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="dot" style="background:${subMeta.color}"></span>${subMeta.label}
+            <span class="group-count">${subItems.length}</span>
+          </button>
+          <div class="nav-subgroup-links collapsed" data-subgroup-links="${cat}-${subKey}"><div class="links-inner">`;
+        if(subItems.length){
+          subItems.forEach(n => {
+            html += `<a class="nav-link sub-link" data-target="${n.id}" href="#${n.id}" style="--accent-active:${subMeta.color}">
+              <span class="stub" style="background:${subMeta.color}"></span>${n.name}
+            </a>`;
+          });
+        } else {
+          html += `<div class="nav-empty">Coming soon</div>`;
+        }
+        html += `</div></div></div>`;
+      });
+    } else if(items.length){
       items.forEach(n => {
         html += `<a class="nav-link" data-target="${n.id}" href="#${n.id}" style="--accent-active:${meta.color}">
           <span class="stub" style="background:${meta.color}"></span>${n.name}
@@ -765,6 +1305,30 @@ function buildNav(){
       }
     });
   });
+
+  // subgroup accordion (e.g. Color / Core / Dynamic ... under Shader Nodes) —
+  // exclusive within its own parent group, independent of other parent groups.
+  document.querySelectorAll(".nav-subgroup-label").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const key = btn.dataset.subgroup;
+      const parentGroup = btn.closest(".nav-group-links");
+      const links = document.querySelector(`[data-subgroup-links="${key}"]`);
+      const wasCollapsed = links.classList.contains("collapsed");
+
+      parentGroup.querySelectorAll(".nav-subgroup-links").forEach(el => el.classList.add("collapsed"));
+      parentGroup.querySelectorAll(".nav-subgroup-label").forEach(b => {
+        b.classList.add("collapsed");
+        b.setAttribute("aria-expanded", "false");
+      });
+
+      if(wasCollapsed){
+        links.classList.remove("collapsed");
+        btn.classList.remove("collapsed");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
 }
 
 function socketRow(s){
@@ -783,12 +1347,16 @@ function buildArticles(){
   let html = "";
   NODEGROUPS.forEach(n => {
     const meta = CAT_META[n.category];
+    const subMeta = (meta.subcats && n.sub) ? meta.subcats[n.sub] : null;
+    const badgeColor = subMeta ? subMeta.color : meta.color;
+    const badgeLabel = subMeta ? subMeta.label : n.category;
+    const crumb = subMeta ? `NodeGroups &gt; ${meta.label} &gt; ${subMeta.label} &gt; ${n.name}` : `NodeGroups &gt; ${n.name}`;
     html += `
     <article class="node-article" id="${n.id}">
       <div class="node-main">
         <div class="node-kicker">
-          <span class="cat-badge"><span class="dot" style="background:${meta.color}"></span>${n.category}</span>
-          <span class="node-path">NodeGroups &gt; ${n.name}</span>
+          <span class="cat-badge"><span class="dot" style="background:${badgeColor}"></span>${badgeLabel}</span>
+          <span class="node-path">${crumb}</span>
         </div>
         <h2>${n.name}</h2>
         <div class="node-tagline">${n.tagline}</div>
