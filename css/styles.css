@@ -312,6 +312,40 @@
      the homepage) — same look, less vertical padding since there's no
      full brand pitch to make room for */
   .hero.hero-compact{ padding:44px 48px 34px 48px; }
+
+  /* ---------------- HOMEPAGE CARD GRID ---------------- */
+  .home-section{ padding:12px 48px 64px 48px; }
+  .home-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .home-card{
+    display:block;
+    padding:18px 20px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    background:var(--panel);
+    text-decoration:none;
+    color:inherit;
+    transition:border-color .15s ease, background .15s ease, transform .15s ease;
+  }
+  .home-card:hover{
+    border-color:var(--card-accent, var(--accent-pink));
+    background:var(--panel-2);
+    transform:translateY(-2px);
+  }
+  .home-card-head{
+    display:flex; align-items:center; gap:8px; margin-bottom:8px;
+  }
+  .home-card-head .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+  .home-card h3{
+    font-size:15.5px; margin:0; font-family:'Space Grotesk',sans-serif;
+  }
+  .home-card p{
+    font-size:13px; color:var(--text-dim); margin:0; line-height:1.55;
+  }
   .hero h1{
     font-size:48px; line-height:1.1; margin-bottom:14px;
     font-weight:700;
@@ -474,4 +508,5 @@
     .hero{ padding:80px 22px 34px 22px; }
     .node-article{ padding:38px 22px; gap:28px; }
     .node-images{ flex-direction:column; }
+    .home-section{ padding:8px 22px 44px 22px; }
   }

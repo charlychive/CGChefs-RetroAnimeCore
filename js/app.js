@@ -15,16 +15,22 @@
    which is just labels/colors — cheap, no media), but only the CURRENT
    page's category is expandable into individual node links. Every other
    category is a single row that links out to that category's own page
-   (index.html for "install", otherwise "<key>.html"). This keeps the
-   original rule intact: adding a nodegroup to an EXISTING category means
-   editing exactly one js/data/*.js file — never index.html, never this
-   file, and never another page's HTML.
+   ("<key>.html" — see pageHref()). This keeps the original rule intact:
+   adding a nodegroup to an EXISTING category means editing exactly one
+   js/data/*.js file — never any page's HTML, and never this file.
 
    Adding a brand-new top-level category or shader subcategory still means:
    add it to CAT_META / SHADER_SUBCATS below, create its js/data/*.js file,
-   and (new) create its own <key>.html page following the pattern of the
-   other category pages (copy one and swap the category key + data script
-   tags + header text).
+   and create its own <key>.html page following the pattern of the other
+   category pages (copy one and swap the category key + data script tags +
+   header text).
+
+   index.html is NOT a category page — it's the handwritten homepage (its
+   own hero copy + a card grid built by buildHomeCards() below, one card
+   per CAT_META entry). It sets window.PAGE_CATEGORY = "home", a value
+   that deliberately matches no CAT_META key, so every category — install
+   included — shows up in the sidebar as a normal external link. The
+   Installation Guide lives at install.html like everything else.
    ================================================================ */
 
 
@@ -46,10 +52,10 @@ const SHADER_SUBCATS = {
 
 const CAT_META = {
   install:     { label:"Installation Guide",  color:"var(--cat-install)" },
+  materials:   { label:"Materials",           color:"var(--cat-materials)" },
   shader:      { label:"Shader Nodes",        color:"var(--cat-shader)", subcats: SHADER_SUBCATS },
   compositor:  { label:"Compositing Nodes",   color:"var(--cat-compositor)" },
   modifiers:   { label:"Modifiers",           color:"var(--cat-modifiers)" },
-  materials:   { label:"Materials",           color:"var(--cat-materials)" },
   assets:      { label:"Assets",              color:"var(--cat-assets)" },
   roadmap:     { label:"Roadmap",             color:"var(--cat-roadmap)" },
   tutorials:   { label:"Tutorials",           color:"var(--cat-tutorials)" },
@@ -61,10 +67,24 @@ const TYPE_COLOR = {
   vector:"var(--sock-vector)", color:"var(--sock-color)", image:"var(--sock-image)"
 };
 
-/* Every category's own page. "install" lives at the site root as index.html;
-   everything else is "<key>.html" right next to it. */
+/* One-line descriptions used on the homepage's category cards
+   (buildHomeCards) — kept in sync with each page's own header lead text. */
+const CAT_BLURB = {
+  install:     "Get the pack installed and ready to use — links, requirements, and setup steps.",
+  materials:   "Ready-made materials, broken down the same way as the nodegroups — inputs, outputs, and what each one is for.",
+  shader:      "Every custom Shader Node in the pack — what each socket does, its type, and its default value.",
+  compositor:  "Every custom Compositor Node in the pack — what each socket does, its type, and its default value.",
+  modifiers:   "Custom modifier setups, with the settings and sockets that matter explained.",
+  assets:      "Meshes, rigs, and other ready-to-use assets included in the pack.",
+  roadmap:     "What's shipped, what's in progress, and what's planned next.",
+  tutorials:   "Walkthroughs and guides for getting the most out of the pack.",
+  faq:         "Answers to common questions about installing and using the pack.",
+  contact:     "Ways to reach CGCHEFS with questions, bug reports, or feedback."
+};
+
+/* Every category's own page — "<key>.html" at the site root. */
 function pageHref(cat){
-  return cat === "install" ? "index.html" : `${cat}.html`;
+  return `${cat}.html`;
 }
 
 function imgSlot(label, hint, src){
@@ -208,8 +228,13 @@ function socketRow(s){
 }
 
 function buildArticles(){
+  // Pages that don't render nodegroup data (currently just the handwritten
+  // homepage) have no #articleContent element at all — nothing to do here.
+  const container = document.getElementById("articleContent");
+  if(!container) return;
+
   if(!NODEGROUPS.length){
-    document.getElementById("articleContent").innerHTML = `
+    container.innerHTML = `
       <div class="empty-page">
         <div class="section-label">Coming soon</div>
         <p>This section doesn't have any published entries yet. Check back soon, or jump to another category from the sidebar.</p>
@@ -249,11 +274,32 @@ function buildArticles(){
       </aside>
     </article>`;
   });
-  document.getElementById("articleContent").innerHTML = html;
+  container.innerHTML = html;
+}
+
+/* Homepage-only: one card per CAT_META entry, in the same order as the
+   sidebar, linking out to that category's page. No-ops on every other
+   page since #homeCards only exists on index.html. */
+function buildHomeCards(){
+  const container = document.getElementById("homeCards");
+  if(!container) return;
+  let html = "";
+  Object.keys(CAT_META).forEach(cat => {
+    const meta = CAT_META[cat];
+    html += `<a class="home-card" href="${pageHref(cat)}" style="--card-accent:${meta.color}">
+      <div class="home-card-head">
+        <span class="dot" style="background:${meta.color}"></span>
+        <h3>${meta.label}</h3>
+      </div>
+      <p>${CAT_BLURB[cat] || ""}</p>
+    </a>`;
+  });
+  container.innerHTML = html;
 }
 
 buildNav();
 buildArticles();
+buildHomeCards();
 
 /* ---------------- scroll-spy ---------------- */
 /* Only ever observes THIS page's own sections, since NODEGROUPS only ever
