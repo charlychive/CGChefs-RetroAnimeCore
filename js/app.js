@@ -1,16 +1,30 @@
 /* ================================================================
-   APP LOGIC
+   APP LOGIC — shared across every page of the site
    ----------------------------------------------------------------
-   Loaded LAST, after every js/data/*.js file has pushed its entries
-   into window.NODEGROUPS. Defines the category/subcategory metadata,
-   builds the sidebar outliner + article pages from NODEGROUPS, and
-   wires up interaction (accordions, scroll-spy, mobile toggle).
+   MULTI-PAGE ARCHITECTURE (as of the split into per-category pages):
 
-   To add a brand-new top-level category or shader subcategory, add it
-   to CAT_META / SHADER_SUBCATS below AND create its js/data/*.js file
-   AND add a <script src="js/data/...js"> tag in index.html before this
-   file. Adding a nodegroup to an EXISTING category/subcategory never
-   requires touching this file or index.html — just edit its data file.
+   Every page loads window.NODEGROUPS = [] first, then sets
+   window.PAGE_CATEGORY to that page's own CAT_META key (e.g. "shader"),
+   then loads ONLY that category's js/data/*.js file(s) — never another
+   category's — then loads this file last. That means NODEGROUPS on any
+   given page only ever contains that page's own nodegroups: nothing else
+   loads or renders, so a page with heavy images/GIFs never pulls in
+   another category's media.
+
+   The sidebar still shows every category on every page (via CAT_META,
+   which is just labels/colors — cheap, no media), but only the CURRENT
+   page's category is expandable into individual node links. Every other
+   category is a single row that links out to that category's own page
+   (index.html for "install", otherwise "<key>.html"). This keeps the
+   original rule intact: adding a nodegroup to an EXISTING category means
+   editing exactly one js/data/*.js file — never index.html, never this
+   file, and never another page's HTML.
+
+   Adding a brand-new top-level category or shader subcategory still means:
+   add it to CAT_META / SHADER_SUBCATS below, create its js/data/*.js file,
+   and (new) create its own <key>.html page following the pattern of the
+   other category pages (copy one and swap the category key + data script
+   tags + header text).
    ================================================================ */
 
 
@@ -47,6 +61,12 @@ const TYPE_COLOR = {
   vector:"var(--sock-vector)", color:"var(--sock-color)", image:"var(--sock-image)"
 };
 
+/* Every category's own page. "install" lives at the site root as index.html;
+   everything else is "<key>.html" right next to it. */
+function pageHref(cat){
+  return cat === "install" ? "index.html" : `${cat}.html`;
+}
+
 function imgSlot(label, hint, src){
   if(src){
     return `<figure class="img-slot has-image" style="margin:0">
@@ -66,16 +86,35 @@ function buildNav(){
   const groups = {};
   NODEGROUPS.forEach(n => (groups[n.category] ||= []).push(n));
   let html = "";
+
   Object.keys(CAT_META).forEach(cat => {
     const meta = CAT_META[cat];
+    const isCurrent = cat === window.PAGE_CATEGORY;
+
+    if(!isCurrent){
+      // Every category that ISN'T this page: one plain row that links out
+      // to that category's own page. We deliberately never show its item
+      // list or count here — that data lives in a js/data/*.js file this
+      // page never loads, which is the entire point of splitting by page.
+      html += `<div class="nav-group">
+        <a class="nav-group-label nav-external" href="${pageHref(cat)}">
+          <span class="dot" style="background:${meta.color}"></span>${meta.label}
+          <svg class="external-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+      </div>`;
+      return;
+    }
+
+    // The current page's own category: full expandable outliner tree,
+    // open by default since it's the whole reason you're on this page.
     const items = groups[cat] || [];
     html += `<div class="nav-group">
-      <button type="button" class="nav-group-label collapsed" data-group="${cat}" aria-expanded="false">
+      <button type="button" class="nav-group-label current-page" data-group="${cat}" aria-expanded="true">
         <svg class="chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
         <span class="dot" style="background:${meta.color}"></span>${meta.label}
         <span class="group-count">${items.length}</span>
       </button>
-      <div class="nav-group-links collapsed" data-group-links="${cat}"><div class="links-inner">`;
+      <div class="nav-group-links" data-group-links="${cat}"><div class="links-inner">`;
 
     if(meta.subcats){
       // nested outliner tree: group this category's items by their `sub` key
@@ -113,32 +152,26 @@ function buildNav(){
     }
     html += `</div></div></div>`;
   });
+
   document.getElementById("navContent").innerHTML = html;
 
-  document.querySelectorAll(".nav-group-label").forEach(btn => {
+  // Current-page group toggle (collapse it if you want to scan the rest of
+  // the sidebar without scrolling past every item). Only one such group
+  // exists per page now, so there's no "close the others" exclusivity to
+  // manage — that only mattered when every category lived on one page.
+  document.querySelectorAll(".nav-group-label[data-group]").forEach(btn => {
     btn.addEventListener("click", () => {
       const cat = btn.dataset.group;
       const links = document.querySelector(`[data-group-links="${cat}"]`);
       const wasCollapsed = links.classList.contains("collapsed");
-
-      // close every group first
-      document.querySelectorAll(".nav-group-links").forEach(el => el.classList.add("collapsed"));
-      document.querySelectorAll(".nav-group-label").forEach(b => {
-        b.classList.add("collapsed");
-        b.setAttribute("aria-expanded", "false");
-      });
-
-      // then reopen only the one that was clicked, if it had been closed
-      if(wasCollapsed){
-        links.classList.remove("collapsed");
-        btn.classList.remove("collapsed");
-        btn.setAttribute("aria-expanded", "true");
-      }
+      links.classList.toggle("collapsed");
+      btn.classList.toggle("collapsed", !wasCollapsed);
+      btn.setAttribute("aria-expanded", String(wasCollapsed));
     });
   });
 
   // subgroup accordion (e.g. Color / Core / Dynamic ... under Shader Nodes) —
-  // exclusive within its own parent group, independent of other parent groups.
+  // exclusive within the current page's single expanded group.
   document.querySelectorAll(".nav-subgroup-label").forEach(btn => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -175,6 +208,15 @@ function socketRow(s){
 }
 
 function buildArticles(){
+  if(!NODEGROUPS.length){
+    document.getElementById("articleContent").innerHTML = `
+      <div class="empty-page">
+        <div class="section-label">Coming soon</div>
+        <p>This section doesn't have any published entries yet. Check back soon, or jump to another category from the sidebar.</p>
+      </div>`;
+    return;
+  }
+
   let html = "";
   NODEGROUPS.forEach(n => {
     const meta = CAT_META[n.category];
@@ -214,6 +256,8 @@ buildNav();
 buildArticles();
 
 /* ---------------- scroll-spy ---------------- */
+/* Only ever observes THIS page's own sections, since NODEGROUPS only ever
+   holds this page's own category. */
 const links = Array.from(document.querySelectorAll(".nav-link"));
 const sections = NODEGROUPS.map(n => document.getElementById(n.id));
 const spy = new IntersectionObserver((entries) => {

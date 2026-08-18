@@ -114,6 +114,7 @@
   }
   .sidebar-head .mark{
     display:flex; align-items:center; gap:9px;
+    text-decoration:none; color:inherit;
   }
   .sidebar-head .mark .brand-logo{
     display:block;
@@ -137,6 +138,7 @@
     background:none; border:none;
     cursor:pointer;
     text-align:left;
+    text-decoration:none;
     border-radius:var(--radius);
   }
   .nav-group-label:hover{ color:var(--text); background:var(--panel-2); }
@@ -151,6 +153,16 @@
     font-size:10px;
     opacity:.7;
   }
+
+  /* a category that ISN'T the current page: single row, links out to that
+     category's own page (index.html for install, "<key>.html" otherwise) */
+  .nav-group-label.nav-external .external-arrow{
+    margin-left:auto; flex:none; opacity:.45;
+  }
+  .nav-group-label.nav-external:hover .external-arrow{ opacity:.8; }
+
+  /* the current page's own category row in the sidebar */
+  .nav-group-label.current-page{ color:var(--text); }
 
   .nav-group-links{
     display:grid;
@@ -291,6 +303,15 @@
     display:flex; align-items:center; gap:8px;
     margin-bottom:16px;
   }
+  .eyebrow-home-link{
+    color:var(--text-faint); text-decoration:none; margin-left:2px;
+  }
+  .eyebrow-home-link:hover{ color:var(--text); text-decoration:underline; }
+
+  /* compact variant of .hero used on per-category pages (everything except
+     the homepage) — same look, less vertical padding since there's no
+     full brand pitch to make room for */
+  .hero.hero-compact{ padding:44px 48px 34px 48px; }
   .hero h1{
     font-size:48px; line-height:1.1; margin-bottom:14px;
     font-weight:700;
@@ -431,6 +452,12 @@
   .img-caption{
     font-size:11.5px; color:var(--text-faint); text-align:center; margin-top:-8px;
   }
+
+  /* ---------------- EMPTY PAGE (category with no published entries yet) ---------------- */
+  .empty-page{
+    padding:52px 48px; max-width:640px;
+  }
+  .empty-page p{ font-size:14.5px; }
 
   /* ---------------- RESPONSIVE ---------------- */
   @media (max-width: 980px){
