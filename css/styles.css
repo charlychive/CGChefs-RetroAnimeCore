@@ -129,20 +129,33 @@
   /* ---------------- SIDEBAR SEARCH ---------------- */
   .sidebar-search{ padding:14px 22px 4px 22px; }
   .sidebar-search input{
+    /* reset native OS/browser search-field chrome (Firefox/Safari/some
+       Windows Chrome builds otherwise render this as a plain white system
+       text field, ignoring the background/border below) */
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
     width:100%;
-    background:var(--panel);
+    background-color:var(--panel);
+    background-image:none;
+    box-shadow:none;
     border:1px solid var(--border);
     border-radius:var(--radius);
     color:var(--text);
+    font-family:'Inter',sans-serif;
     font-size:12.5px;
     padding:9px 11px;
     outline:none;
   }
-  .sidebar-search input::placeholder{ color:var(--text-faint); }
+  .sidebar-search input::placeholder{ color:var(--text-faint); opacity:1; }
   .sidebar-search input:focus{ border-color:var(--accent-pink); }
-  /* hide the native Chrome/Edge "x" clear icon so it doesn't clash with the
-     dark theme's default styling */
-  .sidebar-search input::-webkit-search-cancel-button{ opacity:.6; }
+  /* hide the native search-field icon/clear-button chrome across engines
+     so nothing native peeks through the reset above */
+  .sidebar-search input::-webkit-search-cancel-button,
+  .sidebar-search input::-webkit-search-decoration{
+    -webkit-appearance:none;
+    appearance:none;
+  }
 
   .search-hide{ display:none !important; }
   .search-no-results{
