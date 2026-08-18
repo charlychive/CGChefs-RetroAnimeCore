@@ -30,6 +30,10 @@
       </a>
       <div class="sub">Retro Anime Core — nodegroup reference</div>
     </div>
+    <div class="sidebar-search">
+      <input type="search" id="navSearch" class="mono" placeholder="Search…" autocomplete="off" spellcheck="false">
+    </div>
+    <div id="searchCrossResults" class="search-cross-results"></div>
     <div id="navContent"></div>
     <div class="sidebar-foot">Built for the asset pack — see <span class="mono">js/data/</span> to add or edit entries.</div>
   </nav>
@@ -57,6 +61,7 @@
 </div>
 
 <script>window.NODEGROUPS = []; window.PAGE_CATEGORY = "faq";</script>
+<script src="js/data/search-index.js"></script>
 <!-- No entries yet for "faq". When you add js/data/faq.js,
      load it here BEFORE app.js, e.g.:
      <script src="js/data/faq.js"></script> -->

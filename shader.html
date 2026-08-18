@@ -30,6 +30,10 @@
       </a>
       <div class="sub">Retro Anime Core — nodegroup reference</div>
     </div>
+    <div class="sidebar-search">
+      <input type="search" id="navSearch" class="mono" placeholder="Search…" autocomplete="off" spellcheck="false">
+    </div>
+    <div id="searchCrossResults" class="search-cross-results"></div>
     <div id="navContent"></div>
     <div class="sidebar-foot">Built for the asset pack — see <span class="mono">js/data/</span> to add or edit entries.</div>
   </nav>
@@ -63,6 +67,7 @@
 </div>
 
 <script>window.NODEGROUPS = []; window.PAGE_CATEGORY = "shader";</script>
+<script src="js/data/search-index.js"></script>
 <script src="js/data/shader-color.js"></script>
 <script src="js/data/shader-core.js"></script>
 <script src="js/data/shader-dynamic.js"></script>
