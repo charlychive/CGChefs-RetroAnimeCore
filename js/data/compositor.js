@@ -10,7 +10,7 @@ window.NODEGROUPS.push(
     tagline: "Cel-exposed bloom aesthetic",
     description: "Adds a bloom effect to your scene or image with a retro aesthetic, representing how light would be exposed on a cel.",
     images: {
-      preview: "images/compositor/retro-bloom-node.png"
+      preview: "images/compositor/retro-bloom-node.webp"
     },
     inputs: [
       { name:"Image", type:"image", desc:"The source image or render to bloom." },
@@ -33,7 +33,7 @@ window.NODEGROUPS.push(
     tagline: "Analog broadcast signal degradation",
     description: "Reproduces the look of a composite NTSC video signal — chroma bleed, luma smear, reduced scanline resolution, aperture blur, and white-balance drift — by resampling the image, running it through an encode/degrade/decode pass, and recompositing. Covers everything from a light broadcast pass to a fully worn-out VHS capture.",
     images: {
-      preview: "images/compositor/ntsc-filter-node.png"
+      preview: "images/compositor/ntsc-filter-node.webp"
     },
     inputs: [
       { name:"Image", type:"image", desc:"The source image or render to degrade. Connect any render layer, image, or upstream compositor output here." },

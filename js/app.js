@@ -50,7 +50,7 @@ const TYPE_COLOR = {
 function imgSlot(label, hint, src){
   if(src){
     return `<figure class="img-slot has-image" style="margin:0">
-      <img src="${src}" alt="${label}">
+      <img src="${src}" alt="${label}" loading="lazy" decoding="async">
     </figure>`;
   }
   return `<div class="img-slot">
