@@ -68,6 +68,7 @@ const CAT_META = {
   compositor:  { label:"Compositing Nodes",   color:"var(--cat-compositor)" },
   modifiers:   { label:"Modifiers",           color:"var(--cat-modifiers)" },
   assets:      { label:"Assets",              color:"var(--cat-assets)" },
+  addons:      { label:"Addons",              color:"var(--cat-addons)" },
   roadmap:     { label:"Roadmap",             color:"var(--cat-roadmap)" },
   tutorials:   { label:"Tutorials",           color:"var(--cat-tutorials)" },
   faq:         { label:"FAQ",                 color:"var(--cat-faq)" },
@@ -87,6 +88,7 @@ const CAT_BLURB = {
   compositor:  "Every custom Compositor Node in the pack — what each socket does, its type, and its default value.",
   modifiers:   "Custom modifier setups, with the settings and sockets that matter explained.",
   assets:      "Meshes, rigs, and other ready-to-use assets included in the pack.",
+  addons:      "Standalone Blender add-ons bundled with the pack — what each one does and what it needs to run.",
   roadmap:     "What's shipped, what's in progress, and what's planned next.",
   tutorials:   "Walkthroughs and guides for getting the most out of the pack.",
   faq:         "Answers to common questions about installing and using the pack.",
@@ -100,8 +102,14 @@ function pageHref(cat){
 
 function imgSlot(label, hint, src){
   if(src){
+    // Hovering pops the screenshot up to its native pixel size (see the
+    // .img-slot.has-image:hover rules in css/styles.css) — thumbnails in the
+    // 300px side panel are too small to read the node's own text labels
+    // otherwise. Desktop-only (guarded by @media (hover:hover) in CSS) so
+    // touch devices just keep the plain thumbnail.
     return `<figure class="img-slot has-image" style="margin:0">
       <img src="${src}" alt="${label}" loading="lazy" decoding="async">
+      <span class="zoom-hint">Hover to enlarge</span>
     </figure>`;
   }
   return `<div class="img-slot">
@@ -259,6 +267,38 @@ function buildArticles(){
     const subMeta = (meta.subcats && n.sub) ? meta.subcats[n.sub] : null;
     const badgeColor = subMeta ? subMeta.color : meta.color;
     const badgeLabel = subMeta ? subMeta.label : n.category;
+
+    // Addons aren't nodegroups — no Inputs/Outputs sockets, so they get their
+    // own simpler card: features/requirements lists instead of socket rows.
+    // See js/data/addons.js — any entry with type:"addon" takes this branch.
+    if(n.type === "addon"){
+      html += `
+      <article class="node-article" id="${n.id}">
+        <div class="node-main">
+          <div class="node-kicker">
+            <span class="cat-badge"><span class="dot" style="background:${badgeColor}"></span>${badgeLabel}</span>
+            <span class="node-path">Addons &gt; ${n.name}</span>
+          </div>
+          <h2>${n.name}</h2>
+          <div class="node-tagline">${n.tagline}</div>
+          <p class="node-desc">${n.description}</p>
+
+          <div class="section-label">Features</div>
+          <ul class="addon-list">${(n.features || []).map(f => `<li>${f}</li>`).join("")}</ul>
+
+          <div class="section-label">Requirements</div>
+          <ul class="addon-list">${(n.requirements || []).map(r => `<li>${r}</li>`).join("")}</ul>
+
+          ${n.note ? `<div class="node-note"><strong>Note —</strong> ${n.note}</div>` : ""}
+        </div>
+
+        <aside class="node-images">
+          ${imgSlot("Addon Preview", "Screenshot of the addon's UI panel in Blender", n.images && n.images.preview)}
+        </aside>
+      </article>`;
+      return;
+    }
+
     const crumb = subMeta ? `NodeGroups &gt; ${meta.label} &gt; ${subMeta.label} &gt; ${n.name}` : `NodeGroups &gt; ${n.name}`;
     html += `
     <article class="node-article" id="${n.id}">
@@ -426,10 +466,45 @@ function initSearch(){
   input.addEventListener("search", () => applyFilter(input.value));
 }
 
+/* Drives the hover-to-enlarge animation (see the @media(hover:hover) rules
+   in css/styles.css around .img-slot.has-image). The CSS scales each image
+   up via `transform: scale(var(--zoom-scale))` on hover — but the exact
+   factor needed to land each screenshot at its true native pixel size
+   depends on that image's own natural resolution vs. how wide it's
+   currently rendered (which itself depends on --imgpanel-w and viewport
+   width), so it can't be a single fixed number in the CSS. This computes
+   naturalWidth ÷ renderedWidth per image and writes it as a CSS custom
+   property the transition then animates smoothly toward/away from. */
+function initImageZoom(){
+  const imgs = Array.from(document.querySelectorAll(".img-slot.has-image img"));
+  if(!imgs.length) return;
+
+  function setScale(img){
+    if(img.naturalWidth && img.clientWidth){
+      img.style.setProperty("--zoom-scale", (img.naturalWidth / img.clientWidth).toFixed(3));
+    }
+  }
+
+  imgs.forEach(img => {
+    if(img.complete) setScale(img);
+    img.addEventListener("load", () => setScale(img));
+  });
+
+  // Rendered width changes with viewport size (responsive layout), so the
+  // scale factor needs recomputing on resize too — debounced since resize
+  // fires rapidly while the user is actively dragging the window edge.
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => imgs.forEach(setScale), 150);
+  });
+}
+
 buildNav();
 buildArticles();
 buildHomeCards();
 initSearch();
+initImageZoom();
 
 /* ---------------- scroll-spy ---------------- */
 /* Only ever observes THIS page's own sections, since NODEGROUPS only ever

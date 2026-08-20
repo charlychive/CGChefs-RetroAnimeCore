@@ -5,6 +5,15 @@
    loaded on every page, before app.js. See js/app.js's initSearch(). */
 window.SEARCH_INDEX = [
   {
+    "id": "anim-bake-helper",
+    "name": "Anim Bake Helper",
+    "category": "addons",
+    "sub": null,
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Anim Bake Helper does and how it fits into the animation workflow.",
+    "href": "addons.html#anim-bake-helper"
+  },
+  {
     "id": "retro-bloom",
     "name": "Retro Bloom",
     "category": "compositor",
@@ -84,6 +93,42 @@ window.SEARCH_INDEX = [
     "tagline": "View-transform compensation utility",
     "description": "TEMPLATE — replace with final description. A utility nodegroup that compensates for the scene's active view transform, so filters further down the stack see consistent values regardless of whether Standard, Filmic, or AgX is active.",
     "href": "compositor.html#compensate-view"
+  },
+  {
+    "id": "smart-bevel-gn",
+    "name": "Smart Bevel GN",
+    "category": "modifiers",
+    "sub": null,
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Smart Bevel GN does and how it fits into the modifier workflow.",
+    "href": "modifiers.html#smart-bevel-gn"
+  },
+  {
+    "id": "smart-smear",
+    "name": "Smart Smear",
+    "category": "modifiers",
+    "sub": null,
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Smart Smear does and how it fits into the modifier workflow.",
+    "href": "modifiers.html#smart-smear"
+  },
+  {
+    "id": "stopnodetion",
+    "name": "StopNodetion",
+    "category": "modifiers",
+    "sub": null,
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what StopNodetion does and how it fits into the modifier workflow.",
+    "href": "modifiers.html#stopnodetion"
+  },
+  {
+    "id": "hull-lines",
+    "name": "Hull Lines",
+    "category": "modifiers",
+    "sub": null,
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Hull Lines does and how it fits into the modifier workflow.",
+    "href": "modifiers.html#hull-lines"
   },
   {
     "id": "gouache-color",
