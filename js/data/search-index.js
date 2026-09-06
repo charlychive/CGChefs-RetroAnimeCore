@@ -95,6 +95,24 @@ window.SEARCH_INDEX = [
     "href": "compositor.html#compensate-view"
   },
   {
+    "id": "retro-bloom-advanced",
+    "name": "Retro Bloom Advanced",
+    "category": "compositor",
+    "sub": null,
+    "tagline": "Extended bloom control stack",
+    "description": "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
+    "href": "compositor.html#retro-bloom-advanced"
+  },
+  {
+    "id": "napalm-boost",
+    "name": "Napalm Boost",
+    "category": "compositor",
+    "sub": null,
+    "tagline": "High-contrast heat/fire boost",
+    "description": "TEMPLATE — replace with final description. Boosts highlights and warm tones for a hot, high-contrast look, suited to fire, explosions, and other intense-heat effects.",
+    "href": "compositor.html#napalm-boost"
+  },
+  {
     "id": "smart-bevel-gn",
     "name": "Smart Bevel GN",
     "category": "modifiers",

@@ -77,6 +77,9 @@ window.NODEGROUPS.push(
     name: "Color Vignette",
     tagline: "Tinted edge darkening",
     description: "TEMPLATE — replace with final description. Darkens and/or tints the edges of the frame, drawing the eye toward the center of the image.",
+    images: {
+      preview: "images/compositor/color-vignette-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"Amount", type:"value", desc:"TEMPLATE — overall strength of the vignette effect." },
@@ -95,6 +98,9 @@ window.NODEGROUPS.push(
     name: "Color Grading",
     tagline: "Lift / gamma / gain style grade",
     description: "TEMPLATE — replace with final description. A general-purpose color grading stack for shifting the overall look of the image across shadows, midtones, and highlights.",
+    images: {
+      preview: "images/compositor/color-grading-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"Lift", type:"color", desc:"TEMPLATE — shifts the shadow/black point of the image." },
@@ -114,6 +120,9 @@ window.NODEGROUPS.push(
     name: "Tonemapper Stack",
     tagline: "Stacked highlight/shadow tone mapping",
     description: "TEMPLATE — replace with final description. Compresses the dynamic range of the image through a stack of tone-mapping operators, rolling off blown highlights and crushed shadows.",
+    images: {
+      preview: "images/compositor/tonemapper-stack-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"Exposure", type:"value", desc:"TEMPLATE — exposure offset applied before tone mapping." },
@@ -132,6 +141,9 @@ window.NODEGROUPS.push(
     name: "Film Specks",
     tagline: "Dust and speck overlay",
     description: "TEMPLATE — replace with final description. Overlays small dust specks and debris on the image, simulating dirt on the film gate or a scanned print.",
+    images: {
+      preview: "images/compositor/film-specks-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"Density", type:"value", desc:"TEMPLATE — how many specks appear per frame." },
@@ -150,6 +162,9 @@ window.NODEGROUPS.push(
     name: "Basic Film Damage",
     tagline: "Scratches, flicker, and wear",
     description: "TEMPLATE — replace with final description. Adds simple film-damage artifacts — vertical scratches, brightness flicker, and dust — for a worn print look.",
+    images: {
+      preview: "images/compositor/basic-film-damage-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"Scratch Amount", type:"value", desc:"TEMPLATE — density and visibility of vertical scratches." },
@@ -175,6 +190,47 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the compensated output image." }
+    ],
+    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "retro-bloom-advanced",
+    category: "compositor",
+    name: "Retro Bloom Advanced",
+    tagline: "Extended bloom control stack",
+    description: "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
+    images: {
+      preview: "images/compositor/retro-bloom-advanced-node.webp"
+    },
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to bloom." },
+      { name:"Threshold", type:"value", desc:"TEMPLATE — brightness level above which the bloom starts picking up highlights." },
+      { name:"Blend", type:"value", desc:"TEMPLATE — controls the strength of the bloom effect." },
+      { name:"Falloff", type:"value", desc:"TEMPLATE — controls the curve shape of the bloom." },
+      { name:"Bloom Color", type:"color", desc:"TEMPLATE — changes the color of the bloom." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image with the advanced bloom effect applied." }
+    ],
+    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "napalm-boost",
+    category: "compositor",
+    name: "Napalm Boost",
+    tagline: "High-contrast heat/fire boost",
+    description: "TEMPLATE — replace with final description. Boosts highlights and warm tones for a hot, high-contrast look, suited to fire, explosions, and other intense-heat effects.",
+    images: {
+      preview: "images/compositor/napalm-boost-node.webp"
+    },
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
+      { name:"Intensity", type:"value", desc:"TEMPLATE — overall strength of the boost effect." },
+      { name:"Threshold", type:"value", desc:"TEMPLATE — brightness level above which the boost kicks in." },
+      { name:"Tint", type:"color", desc:"TEMPLATE — color tint applied to boosted highlights." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the processed image with the boost applied." }
     ],
     note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
