@@ -27,9 +27,30 @@ window.NODEGROUPS.push(
     note: "This nodegroup also exposes an Advanced sub-panel for finer control. Expand it in the node itself; the sockets above cover the top-level controls most users will touch."
   },
   {
+    id: "retro-bloom-advanced",
+    category: "compositor",
+    name: "Retro Bloom Advanced",
+    tagline: "Extended bloom control stack",
+    description: "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
+    images: {
+      preview: "images/compositor/retro-bloom-advanced-node.webp"
+    },
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to bloom." },
+      { name:"Threshold", type:"value", desc:"TEMPLATE — brightness level above which the bloom starts picking up highlights." },
+      { name:"Blend", type:"value", desc:"TEMPLATE — controls the strength of the bloom effect." },
+      { name:"Falloff", type:"value", desc:"TEMPLATE — controls the curve shape of the bloom." },
+      { name:"Bloom Color", type:"color", desc:"TEMPLATE — changes the color of the bloom." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image with the advanced bloom effect applied." }
+    ],
+    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
     id: "ntsc-filter",
     category: "compositor",
-    name: "Full NTSC V0_5",
+    name: "Full NTSC",
     tagline: "Analog broadcast signal degradation",
     description: "Reproduces the look of a composite NTSC video signal — chroma bleed, luma smear, reduced scanline resolution, aperture blur, and white-balance drift — by resampling the image, running it through an encode/degrade/decode pass, and recompositing. Covers everything from a light broadcast pass to a fully worn-out VHS capture.",
     images: {
@@ -52,24 +73,6 @@ window.NODEGROUPS.push(
       { name:"Image", type:"image", desc:"The processed image with all NTSC artifacts applied, ready to plug into further compositing or the final output." }
     ],
     note: "This nodegroup also exposes deeper sub-panels — Output, Encode, Degradation, Decode, PostProcess, Opacity, and Developer Internal Settings — for finer control. Expand each in the node itself; the sockets above cover the top-level controls most users will touch."
-  },
-  {
-    id: "halation",
-    category: "compositor",
-    name: "Halation",
-    tagline: "Bright-highlight halo bloom",
-    description: "TEMPLATE — replace with final description. Simulates halation: the soft red-orange halo that blooms around bright highlights on film stock, caused by light scattering back through the film base and re-exposing the emulsion.",
-    inputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
-      { name:"Threshold", type:"value", desc:"TEMPLATE — brightness level above which highlights start producing halation." },
-      { name:"Intensity", type:"value", desc:"TEMPLATE — strength of the halation glow." },
-      { name:"Size", type:"value", desc:"TEMPLATE — radius of the halo spreading out from bright highlights." },
-      { name:"Tint", type:"color", desc:"TEMPLATE — color of the halation glow, typically a warm red-orange." }
-    ],
-    outputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — the processed image with halation applied." }
-    ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "color-vignette",
@@ -183,6 +186,9 @@ window.NODEGROUPS.push(
     name: "Compensate View",
     tagline: "View-transform compensation utility",
     description: "TEMPLATE — replace with final description. A utility nodegroup that compensates for the scene's active view transform, so filters further down the stack see consistent values regardless of whether Standard, Filmic, or AgX is active.",
+    images: {
+      preview: "images/compositor/compensate-view-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
       { name:"View Transform", type:"value", desc:"TEMPLATE — which view transform to compensate for (Standard / Filmic / AgX)." },
@@ -190,27 +196,6 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the compensated output image." }
-    ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
-    id: "retro-bloom-advanced",
-    category: "compositor",
-    name: "Retro Bloom Advanced",
-    tagline: "Extended bloom control stack",
-    description: "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
-    images: {
-      preview: "images/compositor/retro-bloom-advanced-node.webp"
-    },
-    inputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to bloom." },
-      { name:"Threshold", type:"value", desc:"TEMPLATE — brightness level above which the bloom starts picking up highlights." },
-      { name:"Blend", type:"value", desc:"TEMPLATE — controls the strength of the bloom effect." },
-      { name:"Falloff", type:"value", desc:"TEMPLATE — controls the curve shape of the bloom." },
-      { name:"Bloom Color", type:"color", desc:"TEMPLATE — changes the color of the bloom." }
-    ],
-    outputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — the source image with the advanced bloom effect applied." }
     ],
     note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
@@ -231,6 +216,25 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed image with the boost applied." }
+    ],
+    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "basic-color-contrast",
+    category: "compositor",
+    name: "Basic Color Contrast",
+    tagline: "Simple saturation/contrast boost",
+    description: "TEMPLATE — replace with final description. A lightweight nodegroup for punching up color saturation and contrast without a full grading stack.",
+    images: {
+      preview: "images/compositor/basic-color-contrast-node.webp"
+    },
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the source image or render to process." },
+      { name:"Saturation", type:"value", desc:"TEMPLATE — overall color saturation of the image." },
+      { name:"Contrast", type:"value", desc:"TEMPLATE — overall contrast of the image." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — the processed output image." }
     ],
     note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }

@@ -23,22 +23,22 @@ window.SEARCH_INDEX = [
     "href": "compositor.html#retro-bloom"
   },
   {
+    "id": "retro-bloom-advanced",
+    "name": "Retro Bloom Advanced",
+    "category": "compositor",
+    "sub": null,
+    "tagline": "Extended bloom control stack",
+    "description": "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
+    "href": "compositor.html#retro-bloom-advanced"
+  },
+  {
     "id": "ntsc-filter",
-    "name": "Full NTSC V0_5",
+    "name": "Full NTSC",
     "category": "compositor",
     "sub": null,
     "tagline": "Analog broadcast signal degradation",
     "description": "Reproduces the look of a composite NTSC video signal — chroma bleed, luma smear, reduced scanline resolution, aperture blur, and white-balance drift — by resampling the image, running it through an encode/degrade/decode pass, and recompositing. Covers everything from a light broadcast pass to a fully worn-out VHS capture.",
     "href": "compositor.html#ntsc-filter"
-  },
-  {
-    "id": "halation",
-    "name": "Halation",
-    "category": "compositor",
-    "sub": null,
-    "tagline": "Bright-highlight halo bloom",
-    "description": "TEMPLATE — replace with final description. Simulates halation: the soft red-orange halo that blooms around bright highlights on film stock, caused by light scattering back through the film base and re-exposing the emulsion.",
-    "href": "compositor.html#halation"
   },
   {
     "id": "color-vignette",
@@ -95,15 +95,6 @@ window.SEARCH_INDEX = [
     "href": "compositor.html#compensate-view"
   },
   {
-    "id": "retro-bloom-advanced",
-    "name": "Retro Bloom Advanced",
-    "category": "compositor",
-    "sub": null,
-    "tagline": "Extended bloom control stack",
-    "description": "TEMPLATE — replace with final description. A more advanced bloom nodegroup with finer-grained control than the base Retro Bloom, for shots that need extra dialing-in.",
-    "href": "compositor.html#retro-bloom-advanced"
-  },
-  {
     "id": "napalm-boost",
     "name": "Napalm Boost",
     "category": "compositor",
@@ -111,6 +102,15 @@ window.SEARCH_INDEX = [
     "tagline": "High-contrast heat/fire boost",
     "description": "TEMPLATE — replace with final description. Boosts highlights and warm tones for a hot, high-contrast look, suited to fire, explosions, and other intense-heat effects.",
     "href": "compositor.html#napalm-boost"
+  },
+  {
+    "id": "basic-color-contrast",
+    "name": "Basic Color Contrast",
+    "category": "compositor",
+    "sub": null,
+    "tagline": "Simple saturation/contrast boost",
+    "description": "TEMPLATE — replace with final description. A lightweight nodegroup for punching up color saturation and contrast without a full grading stack.",
+    "href": "compositor.html#basic-color-contrast"
   },
   {
     "id": "smart-bevel-gn",
