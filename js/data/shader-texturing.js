@@ -10,6 +10,9 @@ window.NODEGROUPS.push(
     name: "Add WhiteNoise",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Add WhiteNoise does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/add-whitenoise-node.webp"
+    },
     inputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -25,6 +28,9 @@ window.NODEGROUPS.push(
     name: "Gobo Noise A",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Gobo Noise A does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/gobo-noise-a-node.webp"
+    },
     inputs: [
       { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -55,6 +61,9 @@ window.NODEGROUPS.push(
     name: "ScreenNoise",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what ScreenNoise does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/screennoise-node.webp"
+    },
     inputs: [
       { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -70,11 +79,51 @@ window.NODEGROUPS.push(
     name: "Soft AO",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Soft AO does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/soft-ao-node.webp"
+    },
     inputs: [
       { name:"Distance", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
     outputs: [
       { name:"AO", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "hex-voronoi-splat",
+    category: "shader",
+    sub: "texturing",
+    name: "Hex Voronoi Splat",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Hex Voronoi Splat does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/hex-voronoi-splat-node.webp"
+    },
+    inputs: [
+      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "sticky-grain",
+    category: "shader",
+    sub: "texturing",
+    name: "Sticky Grain",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Sticky Grain does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/sticky-grain-node.webp"
+    },
+    inputs: [
+      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }

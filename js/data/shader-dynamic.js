@@ -10,6 +10,9 @@ window.NODEGROUPS.push(
     name: "Anisotropic Specular",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Anisotropic Specular does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/anisotropic-specular-node.webp"
+    },
     inputs: [
       { name:"Roughness", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -25,6 +28,9 @@ window.NODEGROUPS.push(
     name: "Highlights",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Highlights does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/highlights-node.webp"
+    },
     inputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -40,6 +46,9 @@ window.NODEGROUPS.push(
     name: "Straight Fresnel",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Straight Fresnel does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/straight-fresnel-node.webp"
+    },
     inputs: [
       { name:"IOR", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -55,11 +64,52 @@ window.NODEGROUPS.push(
     name: "Streaks",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Streaks does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/streaks-node.webp"
+    },
     inputs: [
       { name:"Amount", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
     outputs: [
       { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "fresnel-color-mixer",
+    category: "shader",
+    sub: "dynamic",
+    name: "Fresnel Color Mixer",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Fresnel Color Mixer does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/fresnel-color-mixer-node.webp"
+    },
+    inputs: [
+      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"IOR", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "tube-specular",
+    category: "shader",
+    sub: "dynamic",
+    name: "Tube Specular",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Tube Specular does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/tube-specular-node.webp"
+    },
+    inputs: [
+      { name:"Roughness", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }

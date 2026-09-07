@@ -49,5 +49,24 @@ window.NODEGROUPS.push(
       { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "custom-subsurface",
+    category: "shader",
+    sub: "shaders",
+    name: "Custom Subsurface",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what Custom Subsurface does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/custom-subsurface-node.webp"
+    },
+    inputs: [
+      { name:"Base Color", type:"color", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Radius", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"BSDF", type:"shader", desc:"TEMPLATE — the combined shader output, connect to a Material Output's Surface input." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
 );

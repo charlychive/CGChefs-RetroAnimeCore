@@ -41,12 +41,34 @@ window.NODEGROUPS.push(
     name: "Smooth Threshold",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Smooth Threshold does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/smooth-threshold-node.webp"
+    },
     inputs: [
       { name:"Value", type:"value", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Threshold", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],
     outputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "easypower",
+    category: "shader",
+    sub: "utilities",
+    name: "EasyPower",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what EasyPower does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/easypower-node.webp"
+    },
+    inputs: [
+      { name:"Base", type:"value", desc:"TEMPLATE — describe what this socket controls." },
+      { name:"Exponent", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Value", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }

@@ -203,6 +203,15 @@ window.SEARCH_INDEX = [
     "href": "shader.html#tricolor-blend-mix"
   },
   {
+    "id": "lut-trilinear",
+    "name": "LUT Trilinear",
+    "category": "shader",
+    "sub": "color",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what LUT Trilinear does and how it fits into the shading workflow.",
+    "href": "shader.html#lut-trilinear"
+  },
+  {
     "id": "gradient-core",
     "name": "Gradient Core",
     "category": "shader",
@@ -255,6 +264,24 @@ window.SEARCH_INDEX = [
     "tagline": "TEMPLATE — one-line tagline",
     "description": "TEMPLATE — replace with final description of what Streaks does and how it fits into the shading workflow.",
     "href": "shader.html#streaks"
+  },
+  {
+    "id": "fresnel-color-mixer",
+    "name": "Fresnel Color Mixer",
+    "category": "shader",
+    "sub": "dynamic",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Fresnel Color Mixer does and how it fits into the shading workflow.",
+    "href": "shader.html#fresnel-color-mixer"
+  },
+  {
+    "id": "tube-specular",
+    "name": "Tube Specular",
+    "category": "shader",
+    "sub": "dynamic",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Tube Specular does and how it fits into the shading workflow.",
+    "href": "shader.html#tube-specular"
   },
   {
     "id": "camdata-plus",
@@ -347,6 +374,15 @@ window.SEARCH_INDEX = [
     "href": "shader.html#lorem-ipsum-2"
   },
   {
+    "id": "custom-subsurface",
+    "name": "Custom Subsurface",
+    "category": "shader",
+    "sub": "shaders",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Custom Subsurface does and how it fits into the shading workflow.",
+    "href": "shader.html#custom-subsurface"
+  },
+  {
     "id": "add-whitenoise",
     "name": "Add WhiteNoise",
     "category": "shader",
@@ -392,6 +428,24 @@ window.SEARCH_INDEX = [
     "href": "shader.html#soft-ao"
   },
   {
+    "id": "hex-voronoi-splat",
+    "name": "Hex Voronoi Splat",
+    "category": "shader",
+    "sub": "texturing",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Hex Voronoi Splat does and how it fits into the shading workflow.",
+    "href": "shader.html#hex-voronoi-splat"
+  },
+  {
+    "id": "sticky-grain",
+    "name": "Sticky Grain",
+    "category": "shader",
+    "sub": "texturing",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what Sticky Grain does and how it fits into the shading workflow.",
+    "href": "shader.html#sticky-grain"
+  },
+  {
     "id": "image-select-closure",
     "name": "Image Select Closure",
     "category": "shader",
@@ -417,5 +471,14 @@ window.SEARCH_INDEX = [
     "tagline": "TEMPLATE — one-line tagline",
     "description": "TEMPLATE — replace with final description of what Smooth Threshold does and how it fits into the shading workflow.",
     "href": "shader.html#smooth-threshold"
+  },
+  {
+    "id": "easypower",
+    "name": "EasyPower",
+    "category": "shader",
+    "sub": "utilities",
+    "tagline": "TEMPLATE — one-line tagline",
+    "description": "TEMPLATE — replace with final description of what EasyPower does and how it fits into the shading workflow.",
+    "href": "shader.html#easypower"
   }
 ];

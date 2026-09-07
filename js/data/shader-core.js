@@ -27,6 +27,9 @@ window.NODEGROUPS.push(
     name: "Smart Bevel",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Smart Bevel does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/smart-bevel-node.webp"
+    },
     inputs: [
       { name:"Radius", type:"value", desc:"TEMPLATE — describe what this socket controls." }
     ],

@@ -40,6 +40,9 @@ window.NODEGROUPS.push(
     name: "Normal Reflection Voronoi",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Normal Reflection Voronoi does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/normal-reflection-voronoi-node.webp"
+    },
     inputs: [
       { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }

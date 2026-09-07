@@ -10,6 +10,9 @@ window.NODEGROUPS.push(
     name: "CamData+",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what CamData+ does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/camdata-plus-node.webp"
+    },
     inputs: [
       { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -25,6 +28,9 @@ window.NODEGROUPS.push(
     name: "Spatial UVs",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Spatial UVs does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/spatial-uvs-node.webp"
+    },
     inputs: [
       { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -40,6 +46,9 @@ window.NODEGROUPS.push(
     name: "Spatial UVs Stable",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Spatial UVs Stable does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/spatial-uvs-stable-node.webp"
+    },
     inputs: [
       { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -55,6 +64,9 @@ window.NODEGROUPS.push(
     name: "Triplanar",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Triplanar does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/triplanar-node.webp"
+    },
     inputs: [
       { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Blend", type:"value", desc:"TEMPLATE — describe what this socket controls." }

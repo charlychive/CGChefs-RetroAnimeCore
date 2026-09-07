@@ -10,6 +10,9 @@ window.NODEGROUPS.push(
     name: "Gouache Color",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Gouache Color does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/gouache-color-node.webp"
+    },
     inputs: [
       { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -25,6 +28,9 @@ window.NODEGROUPS.push(
     name: "LUT",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what LUT does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/lut-node.webp"
+    },
     inputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket controls." }
     ],
@@ -40,6 +46,9 @@ window.NODEGROUPS.push(
     name: "Mix HSL",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Mix HSL does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/mix-hsl-node.webp"
+    },
     inputs: [
       { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
@@ -56,6 +65,9 @@ window.NODEGROUPS.push(
     name: "Mix RYB",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Mix RYB does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/mix-ryb-node.webp"
+    },
     inputs: [
       { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
@@ -72,6 +84,9 @@ window.NODEGROUPS.push(
     name: "Color Blend Mix",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Color Blend Mix does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/color-blend-mix-node.webp"
+    },
     inputs: [
       { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." }
@@ -88,6 +103,9 @@ window.NODEGROUPS.push(
     name: "Tricolor Blend Mix",
     tagline: "TEMPLATE — one-line tagline",
     description: "TEMPLATE — replace with final description of what Tricolor Blend Mix does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/tricolor-blend-mix-node.webp"
+    },
     inputs: [
       { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
       { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." },
@@ -95,6 +113,24 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
+    ],
+    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+  },
+  {
+    id: "lut-trilinear",
+    category: "shader",
+    sub: "color",
+    name: "LUT Trilinear",
+    tagline: "TEMPLATE — one-line tagline",
+    description: "TEMPLATE — replace with final description of what LUT Trilinear does and how it fits into the shading workflow.",
+    images: {
+      preview: "images/shaders/lut-trilinear-node.webp"
+    },
+    inputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket controls." }
+    ],
+    outputs: [
+      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket outputs." }
     ],
     note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
