@@ -501,6 +501,10 @@
      Each header is a full-width <button> (a real, easy click/tap hitbox —
      not just the text) with a Blender-style side chevron instead of a
      socket dot, since a panel groups sockets rather than being one itself.
+     Bare style (no box/background envelope) — the header's chevron+text
+     grid column-matches .socket-row's own (16px icon col, 10px gap, 1fr
+     text) so a panel header lines up flush with the bullet points around
+     it rather than reading as a separate button chrome.
      The body collapses via the same grid-rows technique as the sidebar's
      .nav-group-links/.nav-subgroup-links — see initInputPanels() in
      js/app.js for the click handler. Top-level panels start expanded;
@@ -510,31 +514,36 @@
   .input-panel:first-child{ margin-top:0; }
 
   .input-panel-head{
-    display:flex; align-items:center; gap:10px;
+    display:grid;
+    grid-template-columns: 16px 1fr;
+    align-items:center;
+    gap:10px;
     width:100%;
-    padding:11px 14px;
-    background:var(--panel-2);
+    padding:10px 0;
+    background:none;
     border:none;
-    border-radius:var(--radius);
+    border-radius:0;
     cursor:pointer;
     text-align:left;
     outline:none;
   }
-  .input-panel-head:hover{ background:var(--border-soft); }
+  .input-panel-head:hover .input-panel-name{ color:var(--accent-pink); }
   .input-panel-head .chevron{
-    flex:none; width:17px; height:17px;
+    justify-self:center;
+    flex:none; width:15px; height:15px;
     color:var(--text-dim); transition:transform .15s ease;
   }
   .input-panel-head.collapsed .chevron{ transform:rotate(-90deg); }
   .input-panel-name{
-    font-family:'Fredoka',sans-serif; font-weight:700;
-    font-size:16px; letter-spacing:.01em; color:var(--text);
+    font-family:'Inter',sans-serif; font-weight:700;
+    font-size:16px; letter-spacing:0; color:var(--text);
+    transition:color .15s ease;
   }
   .input-panel-desc{
     font-size:12.5px; color:var(--text-faint);
-    margin:10px 2px 8px 2px; line-height:1.5;
+    margin:8px 0 8px 26px; line-height:1.5;
   }
-  .input-panel-fields{ padding:0 2px; }
+  .input-panel-fields{ padding:0; }
   .input-panel-fields .socket-row:first-of-type{ border-top:none; }
 
   .input-panel-body{
@@ -550,17 +559,17 @@
 
   .input-panel.is-nested{
     margin-top:14px;
-    margin-left:20px;
+    margin-left:26px;
     padding-left:14px;
     border-left:2px solid var(--border);
   }
   .input-panel.is-nested .input-panel-head{
-    background:none; border:none; outline:none;
-    padding:8px 8px 8px 4px;
+    padding:6px 0;
+    grid-template-columns: 13px 1fr;
   }
-  .input-panel.is-nested .input-panel-head:hover{ background:var(--panel-2); }
   .input-panel.is-nested .input-panel-name{ font-size:14px; font-weight:600; }
   .input-panel.is-nested .chevron{ width:13px; height:13px; }
+  .input-panel.is-nested .input-panel-desc{ margin-left:23px; }
 
   .input-panel.is-nested.depth-2{ border-left-style:dashed; }
   .input-panel.is-nested.depth-2 .input-panel-name{ font-size:13px; font-weight:600; color:var(--text-dim); }
