@@ -106,10 +106,10 @@ function imgSlot(label, hint, src){
     // .img-slot.has-image:hover rules in css/styles.css) — thumbnails in the
     // 300px side panel are too small to read the node's own text labels
     // otherwise. Desktop-only (guarded by @media (hover:hover) in CSS) so
-    // touch devices just keep the plain thumbnail.
+    // touch devices just keep the plain thumbnail. No border/box-shadow/hint
+    // chrome around it by design — just the screenshot itself, scaling up.
     return `<figure class="img-slot has-image" style="margin:0">
       <img src="${src}" alt="${label}" loading="lazy" decoding="async">
-      <span class="zoom-hint">Hover to enlarge</span>
     </figure>`;
   }
   return `<div class="img-slot">
@@ -246,26 +246,69 @@ function socketRow(s){
   </div>`;
 }
 
+/* Monotonic id source for panelBlock()'s collapsible header/body pairs —
+   just needs to be unique per page load (buildArticles() only ever runs
+   once), so a plain module-level counter is enough; see initInputPanels(). */
+let panelUid = 0;
+
 /* Renders one entry of an `inputGroups` tree (see js/data/shader-core.js's
    "Smart Bevel SN" entry for the shape). Used instead of a flat `inputs`
    array when a nodegroup's settings are organized into Blender-style
    panels/subpanels — depth 0 is a top-level panel, depth 1+ nests visually
    (see .input-panel.is-nested in css/styles.css). Recurses into `subpanels`
    so panels can nest arbitrarily deep, matching however many levels the
-   source material actually uses. */
-function panelBlock(panel, depth){
+   source material actually uses.
+
+   Each panel is a collapsible <button> header (chevron arrow, Blender-panel
+   style — not a socket dot, since a panel isn't a socket) + a body wrapped
+   in its own grid-rows transition, same collapse technique as the sidebar's
+   .nav-group-links/.nav-subgroup-links (see buildNav()). Every panel starts
+   collapsed EXCEPT the very first top-level panel (depth 0, index 0 in the
+   nodegroup's `inputGroups` array — "Basic Bevel Control" for Smart Bevel
+   SN), which starts open so the page isn't just a wall of closed headers —
+   everything else, including that first panel's own subpanels, stays
+   collapsed until clicked. `isFirstTop` is passed down from buildArticles()
+   only for the top-level call; recursive calls into `subpanels` never pass
+   it, so nested panels always collapse regardless of position. */
+function panelBlock(panel, depth, isFirstTop){
   const nestClass = depth > 0 ? ` is-nested depth-${depth}` : "";
+  const startCollapsed = !(depth === 0 && isFirstTop);
+  const collapsedClass = startCollapsed ? " collapsed" : "";
+  const uid = `ip-${panelUid++}`;
   const fieldsHtml = (panel.fields || []).map(socketRow).join("");
   const subHtml = (panel.subpanels || []).map(sp => panelBlock(sp, depth + 1)).join("");
   return `<div class="input-panel${nestClass}">
-    <div class="input-panel-head">
-      <span class="input-panel-dot"></span>
+    <button type="button" class="input-panel-head${collapsedClass}" data-panel-toggle="${uid}" aria-expanded="${!startCollapsed}">
+      <svg class="chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
       <span class="input-panel-name">${panel.label}</span>
+    </button>
+    <div class="input-panel-body${collapsedClass}" data-panel-body="${uid}">
+      <div class="input-panel-body-inner">
+        ${panel.desc ? `<p class="input-panel-desc">${panel.desc}</p>` : ""}
+        ${fieldsHtml ? `<div class="input-panel-fields">${fieldsHtml}</div>` : ""}
+        ${subHtml}
+      </div>
     </div>
-    ${panel.desc ? `<p class="input-panel-desc">${panel.desc}</p>` : ""}
-    ${fieldsHtml ? `<div class="input-panel-fields">${fieldsHtml}</div>` : ""}
-    ${subHtml}
   </div>`;
+}
+
+/* Wires up click-to-collapse for every panelBlock() header rendered into
+   #articleContent. Delegated to one listener on the container (rather than
+   one per button) since buildArticles() can render dozens of these across
+   a page like shader.html. */
+function initInputPanels(){
+  const container = document.getElementById("articleContent");
+  if(!container) return;
+  container.addEventListener("click", e => {
+    const btn = e.target.closest("[data-panel-toggle]");
+    if(!btn) return;
+    const body = container.querySelector(`[data-panel-body="${btn.dataset.panelToggle}"]`);
+    if(!body) return;
+    const wasCollapsed = btn.classList.contains("collapsed");
+    btn.classList.toggle("collapsed", !wasCollapsed);
+    body.classList.toggle("collapsed", !wasCollapsed);
+    btn.setAttribute("aria-expanded", String(wasCollapsed));
+  });
 }
 
 function buildArticles(){
@@ -334,7 +377,7 @@ function buildArticles(){
         <p class="node-desc">${n.description}</p>
 
         <div class="section-label">Inputs</div>
-        ${n.inputGroups ? n.inputGroups.map(p => panelBlock(p, 0)).join("") : n.inputs.map(socketRow).join("")}
+        ${n.inputGroups ? n.inputGroups.map((p, i) => panelBlock(p, 0, i === 0)).join("") : n.inputs.map(socketRow).join("")}
 
         <div class="section-label">Outputs</div>
         <div class="outputs-list">${n.outputs.map(socketRow).join("")}</div>
@@ -527,6 +570,7 @@ buildArticles();
 buildHomeCards();
 initSearch();
 initImageZoom();
+initInputPanels();
 
 /* ---------------- scroll-spy ---------------- */
 /* Only ever observes THIS page's own sections, since NODEGROUPS only ever
