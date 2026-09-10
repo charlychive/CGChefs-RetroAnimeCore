@@ -222,11 +222,11 @@ window.SEARCH_INDEX = [
   },
   {
     "id": "smart-bevel",
-    "name": "Smart Bevel",
+    "name": "Smart Bevel SN (Shader Nodes)",
     "category": "shader",
     "sub": "core",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Smart Bevel does and how it fits into the shading workflow.",
+    "tagline": "Fully customizable procedural bevel and edge-wear normal generator.",
+    "description": "Simulates realistic chamfers, corner rounding's, procedurally varied edges, and surface damage across both EEVEE and Cycles while keeping the mesh editable.",
     "href": "shader.html#smart-bevel"
   },
   {

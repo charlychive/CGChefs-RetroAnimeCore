@@ -502,6 +502,46 @@
   .socket-name{ font-weight:600; font-size:14px; color:var(--text); }
   .socket-desc{ font-size:13.5px; color:var(--text-dim); margin:0; }
 
+  /* ---------------- GROUPED INPUT PANELS (Blender-style panel/subpanel hierarchy) ---------------- */
+  /* Used instead of a flat .socket-row stack when a nodegroup's `inputs` are
+     organized into panels (e.g. Smart Bevel SN's Basic Bevel Control /
+     Texture Settings / Chips Settings / Mapping Settings). See panelBlock()
+     in js/app.js — depth 0 is a top-level panel, deeper levels get
+     .is-nested + a depth-N class for indentation/accent. */
+  .input-panel{ margin-top:26px; }
+  .input-panel:first-child{ margin-top:0; }
+  .input-panel-head{
+    display:flex; align-items:center; gap:8px; margin-bottom:4px;
+  }
+  .input-panel-dot{
+    width:7px; height:7px; border-radius:2px;
+    background:var(--sock-value);
+    flex:none;
+  }
+  .input-panel-name{
+    font-family:'Fredoka',sans-serif; font-weight:600;
+    font-size:14.5px; color:var(--text);
+  }
+  .input-panel-desc{
+    font-size:12.5px; color:var(--text-faint);
+    margin:2px 0 8px 0; line-height:1.5;
+  }
+  .input-panel-fields .socket-row:first-of-type{ border-top:none; }
+
+  .input-panel.is-nested{
+    margin-top:18px;
+    margin-left:20px;
+    padding-left:14px;
+    border-left:2px solid var(--border);
+  }
+  .input-panel.is-nested .input-panel-dot{
+    width:6px; height:6px; background:var(--sock-vector);
+  }
+  .input-panel.is-nested .input-panel-name{ font-size:13.5px; }
+  .input-panel.is-nested.depth-2{ border-left-style:dashed; }
+  .input-panel.is-nested.depth-2 .input-panel-dot{ background:var(--sock-color); }
+  .input-panel.is-nested.depth-2 .input-panel-name{ font-size:13px; color:var(--text-dim); }
+
   /* ---------------- ADDON FEATURE / REQUIREMENT LISTS (Addons tab) ---------------- */
   /* Addons aren't nodegroups — no Inputs/Outputs sockets — so they use a
      plain bulleted list here instead of .socket-row. See the type:"addon"

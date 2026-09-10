@@ -246,6 +246,28 @@ function socketRow(s){
   </div>`;
 }
 
+/* Renders one entry of an `inputGroups` tree (see js/data/shader-core.js's
+   "Smart Bevel SN" entry for the shape). Used instead of a flat `inputs`
+   array when a nodegroup's settings are organized into Blender-style
+   panels/subpanels — depth 0 is a top-level panel, depth 1+ nests visually
+   (see .input-panel.is-nested in css/styles.css). Recurses into `subpanels`
+   so panels can nest arbitrarily deep, matching however many levels the
+   source material actually uses. */
+function panelBlock(panel, depth){
+  const nestClass = depth > 0 ? ` is-nested depth-${depth}` : "";
+  const fieldsHtml = (panel.fields || []).map(socketRow).join("");
+  const subHtml = (panel.subpanels || []).map(sp => panelBlock(sp, depth + 1)).join("");
+  return `<div class="input-panel${nestClass}">
+    <div class="input-panel-head">
+      <span class="input-panel-dot"></span>
+      <span class="input-panel-name">${panel.label}</span>
+    </div>
+    ${panel.desc ? `<p class="input-panel-desc">${panel.desc}</p>` : ""}
+    ${fieldsHtml ? `<div class="input-panel-fields">${fieldsHtml}</div>` : ""}
+    ${subHtml}
+  </div>`;
+}
+
 function buildArticles(){
   // Pages that don't render nodegroup data (currently just the handwritten
   // homepage) have no #articleContent element at all — nothing to do here.
@@ -312,7 +334,7 @@ function buildArticles(){
         <p class="node-desc">${n.description}</p>
 
         <div class="section-label">Inputs</div>
-        ${n.inputs.map(socketRow).join("")}
+        ${n.inputGroups ? n.inputGroups.map(p => panelBlock(p, 0)).join("") : n.inputs.map(socketRow).join("")}
 
         <div class="section-label">Outputs</div>
         <div class="outputs-list">${n.outputs.map(socketRow).join("")}</div>
