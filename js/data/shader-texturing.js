@@ -18,8 +18,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "gobo-noise-a",
@@ -36,23 +35,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
-    id: "granular-overlay",
-    category: "shader",
-    sub: "texturing",
-    name: "Granular Overlay",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Granular Overlay does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Scale", type:"value", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "screennoise",
@@ -69,8 +52,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "soft-ao",
@@ -87,8 +69,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"AO", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "hex-voronoi-splat",
@@ -106,8 +87,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "sticky-grain",
@@ -124,7 +104,6 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   }
 );

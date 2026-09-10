@@ -18,7 +18,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Geometry", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names and defaults once this nodegroup is finalized."
   },
   {
     id: "smart-smear",
@@ -35,7 +34,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Geometry", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names and defaults once this nodegroup is finalized."
   },
   {
     id: "stopnodetion",
@@ -52,7 +50,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Geometry", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names and defaults once this nodegroup is finalized."
   },
   {
     id: "hull-lines",
@@ -69,6 +66,5 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Geometry", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names and defaults once this nodegroup is finalized."
   }
 );

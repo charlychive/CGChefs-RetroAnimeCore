@@ -4,37 +4,6 @@
    this array; no need to touch index.html or app.js. */
 window.NODEGROUPS.push(
   {
-    id: "image-select-closure",
-    category: "shader",
-    sub: "utilities",
-    name: "Image Select Closure",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Image Select Closure does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"Image", type:"image", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
-    id: "project-onto-normal",
-    category: "shader",
-    sub: "utilities",
-    name: "Project Onto Normal",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Project Onto Normal does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket controls." },
-      { name:"Normal", type:"vector", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
     id: "smooth-threshold",
     category: "shader",
     sub: "utilities",
@@ -50,8 +19,7 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Fac", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   },
   {
     id: "easypower",
@@ -69,7 +37,6 @@ window.NODEGROUPS.push(
     ],
     outputs: [
       { name:"Value", type:"value", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
+    ]
   }
 );

@@ -19,7 +19,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Camera Data", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "spatial-uvs",
@@ -37,7 +36,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"UV", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "spatial-uvs-stable",
@@ -55,7 +53,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"UV", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "triplanar",
@@ -74,6 +71,5 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Vector", type:"vector", desc:"TEMPLATE — describe what this socket outputs." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
 );

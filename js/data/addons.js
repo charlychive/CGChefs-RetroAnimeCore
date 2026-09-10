@@ -20,6 +20,5 @@ window.NODEGROUPS.push(
     requirements: [
       "TEMPLATE — e.g. Blender 4.x"
     ],
-    note: "Placeholder entry — swap in the real feature list, requirements, and a UI screenshot once this addon is finalized."
   }
 );

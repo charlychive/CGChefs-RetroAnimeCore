@@ -153,8 +153,8 @@ window.SEARCH_INDEX = [
     "name": "Gouache Color",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Gouache Color does and how it fits into the shading workflow.",
+    "tagline": "Simple 1 color juicy filter.",
+    "description": "Use a texture mask to emulate a gouache style gradient color falloff and pigment buildup.",
     "href": "shader.html#gouache-color"
   },
   {
@@ -162,8 +162,8 @@ window.SEARCH_INDEX = [
     "name": "LUT",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what LUT does and how it fits into the shading workflow.",
+    "tagline": "Poster Color grading preset with optional high-precision 3D smoothing.",
+    "description": "Remaps your material's colors using standard look-up table data, with an integrated switch to toggle trilinear interpolation for smoothing out harsh color banding during heavy tone transforms.",
     "href": "shader.html#lut"
   },
   {
@@ -171,8 +171,8 @@ window.SEARCH_INDEX = [
     "name": "Mix HSL",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Mix HSL does and how it fits into the shading workflow.",
+    "tagline": "Color mixing node focused on Hue, Lightness, and Saturation blending.",
+    "description": "Lets you blend colors by directly targeting their hue, lightness, and saturation values rather than raw RGB channels, giving you much cleaner control over tone shifts.",
     "href": "shader.html#mix-hsl"
   },
   {
@@ -180,8 +180,8 @@ window.SEARCH_INDEX = [
     "name": "Mix RYB",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Mix RYB does and how it fits into the shading workflow.",
+    "tagline": "Realistic paint blending driven by traditional color theory.",
+    "description": "Mixes colors using the subtractive Red-Yellow-Blue model instead of RGB. This mimics how physical pigments interact, so mixing yellow and blue gives you natural green instead of muddy gray.",
     "href": "shader.html#mix-ryb"
   },
   {
@@ -189,36 +189,18 @@ window.SEARCH_INDEX = [
     "name": "Color Blend Mix",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Color Blend Mix does and how it fits into the shading workflow.",
+    "tagline": "Useful Color Blending Menu Switcher.",
+    "description": "Blends two color inputs using standard Mix, traditional RYB, or HSL color modes, featuring built-in controls to fine-tune final brightness, hue, and saturation.",
     "href": "shader.html#color-blend-mix"
   },
   {
     "id": "tricolor-blend-mix",
-    "name": "Tricolor Blend Mix",
+    "name": "TriColor Blend Mix",
     "category": "shader",
     "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Tricolor Blend Mix does and how it fits into the shading workflow.",
+    "tagline": "Three-way color blending with falloff mapping.",
+    "description": "Maps three distinct color inputs (Light, Midtone, Dark) across a driving mask input, giving you full control over threshold ranges, falloff softness, and post-adjustments.",
     "href": "shader.html#tricolor-blend-mix"
-  },
-  {
-    "id": "lut-trilinear",
-    "name": "LUT Trilinear",
-    "category": "shader",
-    "sub": "color",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what LUT Trilinear does and how it fits into the shading workflow.",
-    "href": "shader.html#lut-trilinear"
-  },
-  {
-    "id": "gradient-core",
-    "name": "Gradient Core",
-    "category": "shader",
-    "sub": "core",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Gradient Core does and how it fits into the shading workflow.",
-    "href": "shader.html#gradient-core"
   },
   {
     "id": "smart-bevel",
@@ -234,17 +216,17 @@ window.SEARCH_INDEX = [
     "name": "Anisotropic Specular",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Anisotropic Specular does and how it fits into the shading workflow.",
+    "tagline": "Directional stretched highlights mask.",
+    "description": "Control the shape of the specular stretching, ideal to emulate metallic shading, hair reflections and more interesting specular shaping.",
     "href": "shader.html#anisotropic-specular"
   },
   {
     "id": "highlights",
-    "name": "Highlights",
+    "name": "Highlight",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Highlights does and how it fits into the shading workflow.",
+    "tagline": "High-luminance view-aligned specular mask generator.",
+    "description": "Control fake reflections and surface highlights with an option to align directly with camera view orientation.",
     "href": "shader.html#highlights"
   },
   {
@@ -252,8 +234,8 @@ window.SEARCH_INDEX = [
     "name": "Straight Fresnel",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Straight Fresnel does and how it fits into the shading workflow.",
+    "tagline": "Angle Snapped Fresnel effect.",
+    "description": "Calculates pure view-dependent Fresnel reflection masks, complete with controllable falloff curves and snapping controls.",
     "href": "shader.html#straight-fresnel"
   },
   {
@@ -261,8 +243,8 @@ window.SEARCH_INDEX = [
     "name": "Streaks",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Streaks does and how it fits into the shading workflow.",
+    "tagline": "Procedural directional noise.",
+    "description": "Emulates vertical noise reflection streaks seen in anime floors, tables and shiny surfaces. Control the amount, length and contrast of the streaks.",
     "href": "shader.html#streaks"
   },
   {
@@ -320,24 +302,6 @@ window.SEARCH_INDEX = [
     "href": "shader.html#triplanar"
   },
   {
-    "id": "image-normal-offset",
-    "name": "Image Normal Offset",
-    "category": "shader",
-    "sub": "normals",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Image Normal Offset does and how it fits into the shading workflow.",
-    "href": "shader.html#image-normal-offset"
-  },
-  {
-    "id": "normal-map-extra",
-    "name": "Normal Map Extra",
-    "category": "shader",
-    "sub": "normals",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Normal Map Extra does and how it fits into the shading workflow.",
-    "href": "shader.html#normal-map-extra"
-  },
-  {
     "id": "normal-reflection-voronoi",
     "name": "Normal Reflection Voronoi",
     "category": "shader",
@@ -354,24 +318,6 @@ window.SEARCH_INDEX = [
     "tagline": "TEMPLATE — one-line tagline",
     "description": "TEMPLATE — replace with final description of what Custom Cel Shade does and how it fits into the shading workflow.",
     "href": "shader.html#custom-cel-shade"
-  },
-  {
-    "id": "lorem-ipsum-1",
-    "name": "Lorem Ipsum 1",
-    "category": "shader",
-    "sub": "shaders",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Lorem Ipsum 1 does and how it fits into the shading workflow.",
-    "href": "shader.html#lorem-ipsum-1"
-  },
-  {
-    "id": "lorem-ipsum-2",
-    "name": "Lorem Ipsum 2",
-    "category": "shader",
-    "sub": "shaders",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Lorem Ipsum 2 does and how it fits into the shading workflow.",
-    "href": "shader.html#lorem-ipsum-2"
   },
   {
     "id": "custom-subsurface",
@@ -399,15 +345,6 @@ window.SEARCH_INDEX = [
     "tagline": "TEMPLATE — one-line tagline",
     "description": "TEMPLATE — replace with final description of what Gobo Noise A does and how it fits into the shading workflow.",
     "href": "shader.html#gobo-noise-a"
-  },
-  {
-    "id": "granular-overlay",
-    "name": "Granular Overlay",
-    "category": "shader",
-    "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Granular Overlay does and how it fits into the shading workflow.",
-    "href": "shader.html#granular-overlay"
   },
   {
     "id": "screennoise",
@@ -444,24 +381,6 @@ window.SEARCH_INDEX = [
     "tagline": "TEMPLATE — one-line tagline",
     "description": "TEMPLATE — replace with final description of what Sticky Grain does and how it fits into the shading workflow.",
     "href": "shader.html#sticky-grain"
-  },
-  {
-    "id": "image-select-closure",
-    "name": "Image Select Closure",
-    "category": "shader",
-    "sub": "utilities",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Image Select Closure does and how it fits into the shading workflow.",
-    "href": "shader.html#image-select-closure"
-  },
-  {
-    "id": "project-onto-normal",
-    "name": "Project Onto Normal",
-    "category": "shader",
-    "sub": "utilities",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Project Onto Normal does and how it fits into the shading workflow.",
-    "href": "shader.html#project-onto-normal"
   },
   {
     "id": "smooth-threshold",

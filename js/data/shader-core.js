@@ -4,23 +4,6 @@
    this array; no need to touch index.html or app.js. */
 window.NODEGROUPS.push(
   {
-    id: "gradient-core",
-    category: "shader",
-    sub: "core",
-    name: "Gradient Core",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Gradient Core does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Base Color", type:"color", desc:"TEMPLATE — describe what this socket controls." },
-      { name:"Gradient Position", type:"value", desc:"TEMPLATE — describe what this socket controls." },
-      { name:"Gradient Softness", type:"value", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"BSDF", type:"shader", desc:"TEMPLATE — the combined shader output, connect to a Material Output's Surface input." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
     id: "smart-bevel",
     category: "shader",
     sub: "core",
@@ -30,7 +13,7 @@ window.NODEGROUPS.push(
     images: {
       preview: "images/shaders/smart-bevel-node.webp"
     },
-    inputGroups: [
+    inputs: [
       {
         label: "Basic Bevel Control",
         fields: [

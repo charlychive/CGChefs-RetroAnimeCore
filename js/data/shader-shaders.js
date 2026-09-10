@@ -18,37 +18,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"BSDF", type:"shader", desc:"TEMPLATE — the combined shader output, connect to a Material Output's Surface input." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
-    id: "lorem-ipsum-1",
-    category: "shader",
-    sub: "shaders",
-    name: "Lorem Ipsum 1",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Lorem Ipsum 1 does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Input", type:"value", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
-  },
-  {
-    id: "lorem-ipsum-2",
-    category: "shader",
-    sub: "shaders",
-    name: "Lorem Ipsum 2",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Lorem Ipsum 2 does and how it fits into the shading workflow.",
-    inputs: [
-      { name:"Input", type:"value", desc:"TEMPLATE — describe what this socket controls." }
-    ],
-    outputs: [
-      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "custom-subsurface",
@@ -67,6 +36,5 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"BSDF", type:"shader", desc:"TEMPLATE — the combined shader output, connect to a Material Output's Surface input." }
     ],
-    note: "Placeholder entry — swap in the real socket names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
 );

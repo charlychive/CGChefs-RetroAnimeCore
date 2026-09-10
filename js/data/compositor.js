@@ -45,7 +45,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the source image with the advanced bloom effect applied." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "ntsc-filter",
@@ -93,7 +92,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed image with the vignette applied." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "color-grading",
@@ -115,7 +113,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the graded output image." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "tonemapper-stack",
@@ -136,7 +133,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the tone-mapped output image." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "film-specks",
@@ -157,7 +153,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed image with specks overlaid." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "basic-film-damage",
@@ -178,7 +173,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed image with damage applied." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "compensate-view",
@@ -197,7 +191,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the compensated output image." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "napalm-boost",
@@ -217,7 +210,6 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed image with the boost applied." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   },
   {
     id: "basic-color-contrast",
@@ -236,6 +228,5 @@ window.NODEGROUPS.push(
     outputs: [
       { name:"Image", type:"image", desc:"TEMPLATE — the processed output image." }
     ],
-    note: "Placeholder entry — swap in the real slider names, defaults, and a node preview screenshot once this nodegroup is finalized."
   }
 );

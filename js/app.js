@@ -251,25 +251,26 @@ function socketRow(s){
    once), so a plain module-level counter is enough; see initInputPanels(). */
 let panelUid = 0;
 
-/* Renders one entry of an `inputGroups` tree (see js/data/shader-core.js's
-   "Smart Bevel SN" entry for the shape). Used instead of a flat `inputs`
-   array when a nodegroup's settings are organized into Blender-style
-   panels/subpanels — depth 0 is a top-level panel, depth 1+ nests visually
-   (see .input-panel.is-nested in css/styles.css). Recurses into `subpanels`
-   so panels can nest arbitrarily deep, matching however many levels the
+/* Renders one panel object (see js/data/shader-color.js's "LUT" or
+   shader-dynamic.js's "Anisotropic Specular" entries for real examples,
+   or js/data/shader-core.js's "Smart Bevel SN" for a deeply-nested one).
+   A panel is `{ label, desc?, fields?: [...], subpanels?: [...] }` —
+   depth 0 is a top-level panel, depth 1+ nests visually (see
+   .input-panel.is-nested in css/styles.css). Recurses into `subpanels` so
+   panels can nest arbitrarily deep, matching however many levels the
    source material actually uses.
 
    Each panel is a collapsible <button> header (chevron arrow, Blender-panel
    style — not a socket dot, since a panel isn't a socket) + a body wrapped
    in its own grid-rows transition, same collapse technique as the sidebar's
    .nav-group-links/.nav-subgroup-links (see buildNav()). Every panel starts
-   collapsed EXCEPT the very first top-level panel (depth 0, index 0 in the
-   nodegroup's `inputGroups` array — "Basic Bevel Control" for Smart Bevel
-   SN), which starts open so the page isn't just a wall of closed headers —
-   everything else, including that first panel's own subpanels, stays
-   collapsed until clicked. `isFirstTop` is passed down from buildArticles()
-   only for the top-level call; recursive calls into `subpanels` never pass
-   it, so nested panels always collapse regardless of position. */
+   collapsed EXCEPT the first one rendered for a given nodegroup (see
+   renderInputs() below, which tracks that and passes `isFirstTop`), which
+   starts open so the page isn't just a wall of closed headers — everything
+   else, including that first panel's own subpanels, stays collapsed until
+   clicked. `isFirstTop` only ever applies at depth 0; recursive calls into
+   `subpanels` never pass it, so nested panels always collapse regardless
+   of position. */
 function panelBlock(panel, depth, isFirstTop){
   const nestClass = depth > 0 ? ` is-nested depth-${depth}` : "";
   const startCollapsed = !(depth === 0 && isFirstTop);
@@ -290,6 +291,31 @@ function panelBlock(panel, depth, isFirstTop){
       </div>
     </div>
   </div>`;
+}
+
+/* Renders a nodegroup's `inputs` array for the Inputs section. Each item is
+   EITHER a plain socket field ({name,type,desc}, rendered via socketRow)
+   OR a panel ({label,...}, rendered via panelBlock) — distinguished by
+   whether the item has a `label`. This lets one nodegroup freely mix
+   ungrouped top-level fields with Blender-style grouped panels, in
+   whatever order the real node actually presents them: LUT has 4 flat
+   fields then two panels; Anisotropic Specular has a flat field, then a
+   panel, then more flat fields after it; Smart Bevel SN is nothing but
+   panels. The FIRST panel encountered anywhere in the array starts open
+   (see panelBlock's `isFirstTop`) so the page isn't just a wall of closed
+   headers; every other panel, and all nested subpanels, start collapsed.
+   A nodegroup with no panels at all (the majority of entries) just gets
+   the plain flat socketRow rendering it always had. */
+function renderInputs(items){
+  let firstPanelSeen = false;
+  return (items || []).map(item => {
+    if(item.label !== undefined){
+      const isFirst = !firstPanelSeen;
+      firstPanelSeen = true;
+      return panelBlock(item, 0, isFirst);
+    }
+    return socketRow(item);
+  }).join("");
 }
 
 /* Wires up click-to-collapse for every panelBlock() header rendered into
@@ -377,7 +403,7 @@ function buildArticles(){
         <p class="node-desc">${n.description}</p>
 
         <div class="section-label">Inputs</div>
-        ${n.inputGroups ? n.inputGroups.map((p, i) => panelBlock(p, 0, i === 0)).join("") : n.inputs.map(socketRow).join("")}
+        ${renderInputs(n.inputs)}
 
         <div class="section-label">Outputs</div>
         <div class="outputs-list">${n.outputs.map(socketRow).join("")}</div>
