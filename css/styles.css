@@ -527,17 +527,18 @@
     text-align:left;
     outline:none;
   }
-  .input-panel-head:hover .input-panel-name{ color:var(--accent-pink); }
+  .input-panel-head:hover .input-panel-name{ transform:scale(1.08); }
   .input-panel-head .chevron{
     justify-self:center;
-    flex:none; width:15px; height:15px;
+    flex:none; width:20px; height:20px;
     color:var(--text-dim); transition:transform .15s ease;
   }
   .input-panel-head.collapsed .chevron{ transform:rotate(-90deg); }
   .input-panel-name{
     font-family:'Inter',sans-serif; font-weight:700;
     font-size:16px; letter-spacing:0; color:var(--text);
-    transition:color .15s ease;
+    display:inline-block; transform-origin:left center;
+    transition:transform .2s ease;
   }
   .input-panel-desc{
     font-size:12.5px; color:var(--text-faint);
@@ -568,7 +569,7 @@
     grid-template-columns: 13px 1fr;
   }
   .input-panel.is-nested .input-panel-name{ font-size:14px; font-weight:600; }
-  .input-panel.is-nested .chevron{ width:13px; height:13px; }
+  .input-panel.is-nested .chevron{ width:16px; height:16px; }
   .input-panel.is-nested .input-panel-desc{ margin-left:23px; }
 
   .input-panel.is-nested.depth-2{ border-left-style:dashed; }
