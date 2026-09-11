@@ -121,35 +121,67 @@ window.NODEGROUPS.push(
     category: "shader",
     sub: "dynamic",
     name: "Fresnel Color Mixer",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Fresnel Color Mixer does and how it fits into the shading workflow.",
+    tagline: "Angle-dependent three-tone material colorizer.",
+    description: "Combines a 3-point color gradient with Fresnel angle calculations, driving color shifts from center to rim based on view angle and snapping steps.",
     images: {
       preview: "images/shaders/fresnel-color-mixer-node.webp"
     },
     inputs: [
-      { name:"Color A", type:"color", desc:"TEMPLATE — describe what this socket controls." },
-      { name:"Color B", type:"color", desc:"TEMPLATE — describe what this socket controls." },
-      { name:"IOR", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+      {
+        label: "Color Blending Mode",
+        desc: "Mix, Mix RYB, or Mix HSL."
+      },
+      {
+        label: "Colors",
+        fields: [
+          { name:"Light", type:"color", desc:"Highlight color or image texture." },
+          { name:"Midtone", type:"color", desc:"Midtone color or image texture." },
+          { name:"Shadow", type:"color", desc:"Shadow color or image texture." }
+        ]
+      },
+      {
+        label: "Gradient Settings",
+        fields: [
+          { name:"Light Falloff", type:"value", desc:"Softness/transition width of the light color boundary." },
+          { name:"Light Range", type:"value", desc:"Threshold position where the light color activates." },
+          { name:"Shadow Falloff", type:"value", desc:"Softness/transition width of the dark color boundary." },
+          { name:"Shadow Range", type:"value", desc:"Threshold position where the dark color activates." }
+        ]
+      },
+      {
+        label: "Fresnel Settings",
+        fields: [
+          { name:"Straight", type:"value", desc:"Linear, rigid angle-of-view gradient." },
+          { name:"Fresnel", type:"value", desc:"IOR-based Fresnel reflection gradient." },
+          { name:"Facing", type:"value", desc:"Reverse Fresnel mask gradient." },
+          { name:"View Snapping", type:"value", desc:"Snaps the reflection to view." },
+          { name:"Snapping Steps", type:"value", desc:"Quantizes the snapping angle range." },
+          { name:"Offset", type:"value", desc:"Shifts the reflection across the mesh normals." },
+          { name:"Normal", type:"vector", desc:"Surface normal vector input, influences the reflection distortion." }
+        ]
+      }
     ],
     outputs: [
-      { name:"Color", type:"color", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
+      { name:"Color", type:"color", desc:"The final blended RGB color result." }
+    ]
   },
   {
     id: "tube-specular",
     category: "shader",
     sub: "dynamic",
     name: "Tube Specular",
-    tagline: "TEMPLATE — one-line tagline",
-    description: "TEMPLATE — replace with final description of what Tube Specular does and how it fits into the shading workflow.",
+    tagline: "Tangent-based specular highlight for cylindrical geometry.",
+    description: "Calculates continuous specular highlights optimized for cylindrical and tubular shapes like cables, pipes, and organic tendrils using tangent vectors.",
     images: {
       preview: "images/shaders/tube-specular-node.webp"
     },
     inputs: [
-      { name:"Roughness", type:"value", desc:"TEMPLATE — describe what this socket controls." }
+      { name:"Roughness", type:"value", desc:"Broadness and blurriness of the specular gradient mask." },
+      { name:"Normal", type:"vector", desc:"Surface normal vector input, influences specular distortion." },
+      { name:"Tangent", type:"vector", desc:"Longitudinal tangent vector driving highlight alignment along the tube axis." }
     ],
     outputs: [
-      { name:"BSDF", type:"shader", desc:"TEMPLATE — describe what this socket outputs." }
-    ],
+      { name:"Specular", type:"value", desc:"Greyscale mask output." }
+    ]
   }
 );

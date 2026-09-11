@@ -252,8 +252,8 @@ window.SEARCH_INDEX = [
     "name": "Fresnel Color Mixer",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Fresnel Color Mixer does and how it fits into the shading workflow.",
+    "tagline": "Angle-dependent three-tone material colorizer.",
+    "description": "Combines a 3-point color gradient with Fresnel angle calculations, driving color shifts from center to rim based on view angle and snapping steps.",
     "href": "shader.html#fresnel-color-mixer"
   },
   {
@@ -261,8 +261,8 @@ window.SEARCH_INDEX = [
     "name": "Tube Specular",
     "category": "shader",
     "sub": "dynamic",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Tube Specular does and how it fits into the shading workflow.",
+    "tagline": "Tangent-based specular highlight for cylindrical geometry.",
+    "description": "Calculates continuous specular highlights optimized for cylindrical and tubular shapes like cables, pipes, and organic tendrils using tangent vectors.",
     "href": "shader.html#tube-specular"
   },
   {
@@ -270,8 +270,8 @@ window.SEARCH_INDEX = [
     "name": "CamData+",
     "category": "shader",
     "sub": "mapping",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what CamData+ does and how it fits into the shading workflow.",
+    "tagline": "Advanced view and camera transform vector outputs.",
+    "description": "Utility node outputting essential camera vectors and coordinate spaces needed for complex screen-space, view-aligned, or camera based shader setups.",
     "href": "shader.html#camdata-plus"
   },
   {
@@ -279,8 +279,8 @@ window.SEARCH_INDEX = [
     "name": "Spatial UVs",
     "category": "shader",
     "sub": "mapping",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Spatial UVs does and how it fits into the shading workflow.",
+    "tagline": "Procedural multi-scale UV coordinate modifier.",
+    "description": "Scales and distorts UV coordinate maps using spatial tangent and bi-tangent vectors, perfect for multi-layered procedural tiling and texture detail setups.",
     "href": "shader.html#spatial-uvs"
   },
   {
@@ -288,17 +288,17 @@ window.SEARCH_INDEX = [
     "name": "Spatial UVs Stable",
     "category": "shader",
     "sub": "mapping",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Spatial UVs Stable does and how it fits into the shading workflow.",
+    "tagline": "World-stable UV coordinate generator with spatial blending and randomization.",
+    "description": "Generates an infinite projection mapping coordinates effect, based on position and normal vectors, incorporating random transformations and triplanar blending to minimize seam artifacts and texture repeating.",
     "href": "shader.html#spatial-uvs-stable"
   },
   {
     "id": "triplanar",
-    "name": "Triplanar",
+    "name": "Triplanar UVs",
     "category": "shader",
     "sub": "mapping",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Triplanar does and how it fits into the shading workflow.",
+    "tagline": "Seamless 3-axis projection coordinate generator with object-transform tracking with corrected normals.",
+    "description": "Projects textures onto geometry along world or object axes without requiring manual UV unwrapping, featuring blend controls and optional transform mapping.",
     "href": "shader.html#triplanar"
   },
   {
@@ -306,8 +306,8 @@ window.SEARCH_INDEX = [
     "name": "Normal Reflection Voronoi",
     "category": "shader",
     "sub": "normals",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Normal Reflection Voronoi does and how it fits into the shading workflow.",
+    "tagline": "Surface-reflection vector distortion powered by procedural Voronoi noise.",
+    "description": "Modifies input normal vectors using a procedural Voronoi pattern to simulate surface imperfections, painted angles, or warped reflection dynamics.",
     "href": "shader.html#normal-reflection-voronoi"
   },
   {
@@ -324,17 +324,17 @@ window.SEARCH_INDEX = [
     "name": "Custom Subsurface",
     "category": "shader",
     "sub": "shaders",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Custom Subsurface does and how it fits into the shading workflow.",
+    "tagline": "Customized subsurface scattering shader pass with rim color saturation controls.",
+    "description": "Generates dynamic subsurface light transport effects with explicit color controls, saturation biasing, and custom light penetration profiles. Regular subsurface can look heavily saturated by nature in the subsurface area, so this node helps bring that back to look more akin to how it would be painted on a background surface in anime.",
     "href": "shader.html#custom-subsurface"
   },
   {
     "id": "add-whitenoise",
-    "name": "Add WhiteNoise",
+    "name": "Add Whitenoise",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Add WhiteNoise does and how it fits into the shading workflow.",
+    "tagline": "Procedural white noise color overlay with dither controls.",
+    "description": "Blends high-frequency white noise across base color maps to break up banding and add micro-surface grit.",
     "href": "shader.html#add-whitenoise"
   },
   {
@@ -342,8 +342,8 @@ window.SEARCH_INDEX = [
     "name": "Gobo Noise A",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Gobo Noise A does and how it fits into the shading workflow.",
+    "tagline": "Procedural light-gobo noise generator for dynamic light masking as a card projection.",
+    "description": "Simulates lighting gobos, shadowed silhouettes, and atmospheric light passing through cards using procedural noise controls and transform mappings.",
     "href": "shader.html#gobo-noise-a"
   },
   {
@@ -351,8 +351,8 @@ window.SEARCH_INDEX = [
     "name": "ScreenNoise",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what ScreenNoise does and how it fits into the shading workflow.",
+    "tagline": "Screen-space procedural noise coordinate generator.",
+    "description": "Generates resolution-independent procedural noise locked to screen space coordinates, ideal for material based camera grain, post-process stylization, or UI overlays. Unlike Spatial UVs, Spatial UVs Stable, or Sticky Grain, it doesn't stick to the surface of objects — which in some cases is exactly what you want.",
     "href": "shader.html#screennoise"
   },
   {
@@ -360,17 +360,17 @@ window.SEARCH_INDEX = [
     "name": "Soft AO",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Soft AO does and how it fits into the shading workflow.",
+    "tagline": "Comprehensive dithered ambient occlusion, cavity, and curvature mask generator.",
+    "description": "Built on Blender's native SSAO node. Extracts soft surface contact shadows, dirt-accumulating cavities, and exposed edges to generate realistic wear and occlusion masks.",
     "href": "shader.html#soft-ao"
   },
   {
     "id": "hex-voronoi-splat",
-    "name": "Hex Voronoi Splat",
+    "name": "HexVoronoiSplat",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Hex Voronoi Splat does and how it fits into the shading workflow.",
+    "tagline": "Hexagonal Voronoi texture splatting generator with transition blending.",
+    "description": "Maps and splats images across a hexagonal Voronoi cell grid, using customizable noise and transition controls to eliminate visible repeating seams.",
     "href": "shader.html#hex-voronoi-splat"
   },
   {
@@ -378,26 +378,26 @@ window.SEARCH_INDEX = [
     "name": "Sticky Grain",
     "category": "shader",
     "sub": "texturing",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Sticky Grain does and how it fits into the shading workflow.",
+    "tagline": "Surface and value aware grain noise generator with infinite zoom resolution.",
+    "description": "Applies fine grain noise across surfaces, offering independent noise controls for illuminated and shadowed regions. Uses logic similar to Spatial UVs Stable, applied to a grain/noise chain instead of UV coordinates.",
     "href": "shader.html#sticky-grain"
   },
   {
     "id": "smooth-threshold",
-    "name": "Smooth Threshold",
+    "name": "Smooth Threshold+",
     "category": "shader",
     "sub": "utilities",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what Smooth Threshold does and how it fits into the shading workflow.",
+    "tagline": "Smooth step thresholding operation with clamping and inversion features.",
+    "description": "Applies a smooth transition threshold to scalar input values, enabling soft edge isolation, ramp filtering, or anti-aliased value clamping. Use it like a contrast node.",
     "href": "shader.html#smooth-threshold"
   },
   {
     "id": "easypower",
-    "name": "EasyPower",
+    "name": "Easy Power",
     "category": "shader",
     "sub": "utilities",
-    "tagline": "TEMPLATE — one-line tagline",
-    "description": "TEMPLATE — replace with final description of what EasyPower does and how it fits into the shading workflow.",
+    "tagline": "Exponential contrast and falloff shaping utility.",
+    "description": "Adjusts input value curves using power scaling and shape bias controls to create custom contrast falloffs, gamma adjustments, and value remaps.",
     "href": "shader.html#easypower"
   }
 ];
